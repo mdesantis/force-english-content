@@ -1,0 +1,16 @@
+{
+  "name": "force-english-content",
+  "version": "1.0.0",
+  "description": "[Mozilla Firefox extension] Forces localised web pages with poor or outdated translations to redirect to the original English content",
+  "repository": "https://github.com/mdesantis/force-english-content",
+  "author": "Maurizio De Santis <desantis.maurizio@gmail.com>",
+  "license": "MPL-2.0",
+  "private": true,
+  "devDependencies": {
+    "web-ext": "^6.6.0"
+  },
+  "scripts": {
+    "start:firefox": "web-ext run --source-dir ."
+  },
+  "packageManager": "yarn@3.1.1"
+}

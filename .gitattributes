@@ -1,0 +1,6 @@
+# Mark the yarn lockfile as having been generated.
+yarn.lock linguist-generated
+
+# Yarn > v1
+/.yarn/releases/** binary
+/.yarn/plugins/** binary
