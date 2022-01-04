@@ -7,6 +7,9 @@
   "license": "MPL-2.0",
   "private": true,
   "devDependencies": {
+    "eslint": "^8.6.0",
+    "eslint-plugin-no-constructor-bind": "^2.0.4",
+    "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "web-ext": "^6.6.0"
   },
   "scripts": {

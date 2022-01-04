@@ -1,0 +1,147 @@
+root: true
+
+env:
+  es2021: true
+  browser: true
+  webextensions: true
+
+extends:
+  - eslint:all
+
+plugins:
+  - no-constructor-bind
+  - sort-destructure-keys
+
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+
+rules:
+  array-bracket-newline:
+    - error
+    - consistent
+  array-bracket-spacing:
+    - error
+    - never
+  array-element-newline:
+    - error
+    - consistent
+  # It doesn't allow single line / multiple lines configuration: https://github.com/eslint/eslint/issues/8506
+  arrow-body-style:
+    - off
+  camelcase:
+    - error
+  capitalized-comments:
+    - warn
+    - always
+    - ignoreConsecutiveComments: true
+  curly:
+    - error
+    - multi-line
+    - consistent
+  class-methods-use-this:
+    - off
+  eqeqeq:
+    - error
+    - always
+  func-style:
+    - error
+    - declaration
+    - allowArrowFunctions: true
+  function-call-argument-newline:
+    - error
+    - consistent
+  function-paren-newline:
+    - error
+    - consistent
+  id-length:
+    - off
+  indent:
+    - error
+    - 2
+  linebreak-style:
+    - error
+    - unix
+  max-lines:
+    - error
+    - max: 500
+  max-lines-per-function:
+    - error
+    - max: 100
+  max-len:
+    - error
+    - code: 120
+      ignoreUrls: true
+  max-statements:
+    - error
+    - max: 12
+  multiline-comment-style:
+    - off
+  multiline-ternary:
+    - off
+  newline-per-chained-call:
+    - off
+  no-console:
+    - warn
+  no-constructor-bind/no-constructor-bind:
+    - error
+  no-constructor-bind/no-constructor-state:
+    - error
+  no-debugger:
+    - warn
+  no-extra-parens:
+    - error
+    - all
+    - enforceForArrowConditionals: false
+  no-invalid-this:
+    - off
+  no-irregular-whitespace:
+    - off
+  no-magic-numbers:
+    - off
+  no-multi-str:
+    - off
+  no-multiple-empty-lines:
+    - error
+    - max: 1
+  no-plusplus:
+    - error
+    - allowForLoopAfterthoughts: true
+  no-process-env:
+    - off
+  no-ternary:
+    - off
+  no-underscore-dangle:
+    - off
+  no-unused-vars:
+    - error
+    - argsIgnorePattern: "^_"
+      varsIgnorePattern: "^_"
+  no-warning-comments:
+    - off
+  object-curly-spacing:
+    - error
+    - always
+  object-property-newline:
+    - error
+    - allowAllPropertiesOnSameLine: true
+  one-var:
+    - off
+  padded-blocks:
+    - off
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - never
+  sort-destructure-keys/sort-destructure-keys:
+    - error
+  sort-imports:
+    - error
+    - allowSeparatedGroups: true
+  space-before-function-paren:
+    - error
+    - anonymous: never
+      named: never
+      asyncArrow: always
