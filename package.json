@@ -10,7 +10,8 @@
     "eslint": "^8.6.0",
     "eslint-plugin-no-constructor-bind": "^2.0.4",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
-    "web-ext": "^6.6.0"
+    "web-ext": "^6.6.0",
+    "webextension-polyfill": "^0.8.0"
   },
   "scripts": {
     "start:firefox": "web-ext run --source-dir ."
