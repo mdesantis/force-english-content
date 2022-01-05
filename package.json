@@ -6,15 +6,36 @@
   "author": "Maurizio De Santis <desantis.maurizio@gmail.com>",
   "license": "MPL-2.0",
   "private": true,
+  "source": "src/background.ts",
+  "targets": {
+    "default": {
+      "distDir": "dist",
+      "outputFormat": "global"
+    }
+  },
+  "browserslist": "Firefox ESR",
+  "dependencies": {
+    "webextension-polyfill": "^0.8.0"
+  },
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/webextension-polyfill": "^0.8.2",
     "eslint": "^8.6.0",
     "eslint-plugin-no-constructor-bind": "^2.0.4",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
-    "web-ext": "^6.6.0",
-    "webextension-polyfill": "^0.8.0"
+    "parcel": "^2.0.1",
+    "typescript": "^4.5.4",
+    "web-ext": "^6.6.0"
   },
   "scripts": {
-    "start:firefox": "web-ext run --source-dir ."
+    "build:dev": "parcel build --no-optimize",
+    "build": "parcel build",
+    "watch": "parcel watch",
+    "start:firefox": "web-ext run --verbose --source-dir .",
+    "lint:eslint": "eslint .",
+    "lint:web-ext": "web-ext lint",
+    "lint:tsc": "tsc",
+    "lint": "yarn lint:eslint && yarn lint:web-ext && yarn lint:tsc"
   },
   "packageManager": "yarn@3.1.1"
 }
