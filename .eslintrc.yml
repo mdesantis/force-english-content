@@ -7,14 +7,62 @@ env:
 
 extends:
   - eslint:all
+  - plugin:import/errors
+  - plugin:import/warnings
 
 plugins:
+  - '@typescript-eslint'
   - no-constructor-bind
   - sort-destructure-keys
 
 parserOptions:
   ecmaVersion: latest
   sourceType: module
+
+overrides:
+  - files:
+    - '*.ts'
+    parser: '@typescript-eslint/parser'
+    extends:
+      - 'plugin:@typescript-eslint/recommended'
+      - plugin:import/typescript
+    rules:
+      comma-spacing:
+        - off
+      indent:
+        - off
+      no-shadow:
+        - off
+      no-unused-vars:
+        - off
+      no-use-before-define:
+        - off
+      semi:
+        - off
+      '@typescript-eslint/comma-spacing':
+        - error
+      '@typescript-eslint/indent':
+        - error
+        - 2
+      '@typescript-eslint/no-shadow':
+        - error
+      '@typescript-eslint/no-unused-vars':
+        - error
+        - argsIgnorePattern: "^_"
+          varsIgnorePattern: "^_"
+      '@typescript-eslint/no-use-before-define':
+        - error
+      '@typescript-eslint/semi':
+        - error
+        - never
+      '@typescript-eslint/member-delimiter-style':
+        - error
+        - multiline:
+            delimiter: none
+            requireLast: true
+          singleline:
+            delimiter: semi
+            requireLast: false
 
 rules:
   array-bracket-newline:
@@ -110,6 +158,8 @@ rules:
   no-process-env:
     - off
   no-ternary:
+    - off
+  no-undefined:
     - off
   no-underscore-dangle:
     - off

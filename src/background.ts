@@ -1,4 +1,4 @@
-import browser from "webextension-polyfill";
+import browser from 'webextension-polyfill'
 
 type OnBeforeRequestListenerParametersType = Parameters<typeof browser.webRequest.onBeforeRequest.addListener>
 type OnBeforeRequestListenerCallbackType = OnBeforeRequestListenerParametersType[0]
@@ -6,11 +6,11 @@ type OnBeforeRequestFilterType = OnBeforeRequestListenerParametersType[1]
 type OnBeforeRequestOptionsType = OnBeforeRequestListenerParametersType[2]
 type OnBeforeRequestDetailsType = Parameters<OnBeforeRequestListenerCallbackType>[0]
 
-function replaceAt(array: any[], index: number, element: any) {
+function replaceAt(array: unknown[], index: number, element: unknown) {
   return array.splice(index, 1, element)
 }
 
-function insertAt(array: any[], index: number, element: any) {
+function insertAt(array: unknown[], index: number, element: unknown) {
   return array.splice(index, 0, element)
 }
 
@@ -85,7 +85,7 @@ function rewriteFacebookDevelopersUrl(url: URL) {
   return url
 }
 
-function handleBeforeRequest({ url: urlAsString }: OnBeforeRequestDetailsType) {
+function handleBeforeRequest({ 'url': urlAsString }: OnBeforeRequestDetailsType) {
   const url = new URL(urlAsString)
 
   const rewrittenUrlFns = [
@@ -101,7 +101,7 @@ function handleBeforeRequest({ url: urlAsString }: OnBeforeRequestDetailsType) {
     if (redirectUrl) return { 'redirectUrl': redirectUrl.toString() }
   }
 
-  return
+  return undefined
 }
 
 function start() {

@@ -20,7 +20,10 @@
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
     "@types/webextension-polyfill": "^0.8.2",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
     "eslint": "^8.6.0",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-no-constructor-bind": "^2.0.4",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "parcel": "^2.0.1",
