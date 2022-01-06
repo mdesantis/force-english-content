@@ -37,10 +37,10 @@
   "scripts": {
     "build:parcel:dev": "parcel build --no-optimize",
     "build:parcel": "parcel build",
+    "build:manifest": "mkdir -p dist && cp manifest.json dist",
+    "build:icons": "./scripts/build-icons.sh",
     "build:web-ext": "web-ext build --overwrite-dest",
-    "build:web-ext:destructive": "npm run build:web-ext --overwrite-dest",
-    "build": "npm run build:parcel && cp manifest.json icon.svg dist && npm run build:web-ext",
-    "build:destructive": "npm run build:parcel && cp manifest.json icon.svg dist && npm run build:web-ext:destructive",
+    "build": "npm run build:parcel && npm run build:icons && npm run build:manifest && npm run build:web-ext",
     "clean:dist": "rimraf dist",
     "clean": "npm run clean:dist",
     "watch:parcel": "parcel watch",
