@@ -29,21 +29,30 @@
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "mocha": "^9.1.3",
     "parcel": "^2.0.1",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4",
     "web-ext": "^6.6.0"
   },
   "scripts": {
-    "build:dev": "parcel build --no-optimize",
-    "build": "parcel build",
-    "build:watch": "parcel watch",
-    "start:firefox": "web-ext run --verbose --source-dir .",
+    "build:parcel:dev": "parcel build --no-optimize",
+    "build:parcel": "parcel build",
+    "build:web-ext": "web-ext build --overwrite-dest",
+    "build:web-ext:destructive": "yarn build:web-ext --overwrite-dest",
+    "build": "yarn build:parcel && cp manifest.json icon.svg dist && yarn build:web-ext",
+    "build:destructive": "yarn build:parcel && cp manifest.json icon.svg dist && yarn build:web-ext:destructive",
+    "clean:dist": "rimraf dist",
+    "watch:parcel": "parcel watch",
+    "web-ext:dev": "web-ext run --verbose",
     "lint:eslint": "eslint .",
     "lint:web-ext": "web-ext lint",
     "lint:tsc": "tsc",
-    "lint": "yarn lint:eslint && yarn lint:web-ext && yarn lint:tsc",
+    "lint": "yarn lint:eslint && yarn lint:tsc && yarn lint:web-ext",
     "test": "mocha",
     "test:watch": "mocha --watch"
+  },
+  "webExt": {
+    "sourceDir": "dist/"
   },
   "packageManager": "yarn@3.1.1"
 }

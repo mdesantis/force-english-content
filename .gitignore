@@ -12,3 +12,6 @@ dist
 
 # Parcel v2
 .parcel-cache
+
+# Web Extensions tool (web-ext) artifacts
+web-ext-artifacts
