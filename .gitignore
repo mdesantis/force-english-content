@@ -1,15 +1,6 @@
 node_modules
 dist
 
-# Yarn > v1
-.yarn/*
-!.yarn/cache
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-
 # Parcel v2
 .parcel-cache
 

@@ -38,21 +38,20 @@
     "build:parcel:dev": "parcel build --no-optimize",
     "build:parcel": "parcel build",
     "build:web-ext": "web-ext build --overwrite-dest",
-    "build:web-ext:destructive": "yarn build:web-ext --overwrite-dest",
-    "build": "yarn build:parcel && cp manifest.json icon.svg dist && yarn build:web-ext",
-    "build:destructive": "yarn build:parcel && cp manifest.json icon.svg dist && yarn build:web-ext:destructive",
+    "build:web-ext:destructive": "npm run build:web-ext --overwrite-dest",
+    "build": "npm run build:parcel && cp manifest.json icon.svg dist && npm run build:web-ext",
+    "build:destructive": "npm run build:parcel && cp manifest.json icon.svg dist && npm run build:web-ext:destructive",
     "clean:dist": "rimraf dist",
     "watch:parcel": "parcel watch",
     "web-ext:dev": "web-ext run --verbose",
     "lint:eslint": "eslint .",
     "lint:web-ext": "web-ext lint",
     "lint:tsc": "tsc",
-    "lint": "yarn lint:eslint && yarn lint:tsc && yarn lint:web-ext",
+    "lint": "npm run lint:eslint && npm run lint:tsc && npm run lint:web-ext",
     "test": "mocha",
     "test:watch": "mocha --watch"
   },
   "webExt": {
     "sourceDir": "dist/"
-  },
-  "packageManager": "yarn@3.1.1"
+  }
 }
