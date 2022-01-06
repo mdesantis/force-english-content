@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Force English Content",
   "version": "1.0",
-  "description": "Forces localised web pages with poor or outdated translations to redirect to the original English content. Handles the following websites:\n- docs.microsoft.com\n- developer.mozilla.org\n- reactjs.org\n- developers.facebook.com",
+  "description": "Forces localised web pages with poor or outdated translations to redirect to the original English content. Handles the following websites: docs.microsoft.com, developer.mozilla.org, reactjs.org, developers.facebook.com",
   "icons": {
     "48": "icon.svg",
     "96": "icon.svg"
