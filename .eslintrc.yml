@@ -63,6 +63,19 @@ overrides:
           singleline:
             delimiter: semi
             requireLast: false
+  - files:
+    - '*.spec.ts'
+    rules:
+      max-lines-per-function:
+        - off
+      max-params:
+        - error
+        - max: 4
+      no-param-reassign:
+        - off
+      '@typescript-eslint/no-shadow':
+        - off
+
 
 rules:
   array-bracket-newline:

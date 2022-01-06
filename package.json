@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
+    "@types/mocha": "^9.0.0",
     "@types/webextension-polyfill": "^0.8.2",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
@@ -26,19 +27,23 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-no-constructor-bind": "^2.0.4",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
+    "mocha": "^9.1.3",
     "parcel": "^2.0.1",
+    "ts-node": "^10.4.0",
     "typescript": "^4.5.4",
     "web-ext": "^6.6.0"
   },
   "scripts": {
     "build:dev": "parcel build --no-optimize",
     "build": "parcel build",
-    "watch": "parcel watch",
+    "build:watch": "parcel watch",
     "start:firefox": "web-ext run --verbose --source-dir .",
     "lint:eslint": "eslint .",
     "lint:web-ext": "web-ext lint",
     "lint:tsc": "tsc",
-    "lint": "yarn lint:eslint && yarn lint:web-ext && yarn lint:tsc"
+    "lint": "yarn lint:eslint && yarn lint:web-ext && yarn lint:tsc",
+    "test": "mocha",
+    "test:watch": "mocha --watch"
   },
   "packageManager": "yarn@3.1.1"
 }
