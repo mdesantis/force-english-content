@@ -1,3 +1,19 @@
+
+// Copied from https://github.com/sindresorhus/escape-string-regexp/blob/v5.0.0/index.js.
+// Can't use `import escapeStringRegexp from 'escape-string-regexp'` because otherwise `yarn exec mocha` fails because
+// it can't resolve `.ts` files. Don't ask me why.
+function escapeStringRegexp(string: string) {
+  return string.
+    replace(/[|\\{}()[\]^$+*?.]/gu, '\\$&').
+    replace(/-/gu, '\\x2d')
+}
+
+function caseInsensitiveStringEqual(actual: string, expected: string) {
+  const expectedPattern = new RegExp(`^${escapeStringRegexp(expected)}$`, 'ui')
+
+  return actual.match(expectedPattern)
+}
+
 function replaceAt(array: unknown[], index: number, element: unknown) {
   return array.splice(index, 1, element)
 }
@@ -7,72 +23,77 @@ function insertAt(array: unknown[], index: number, element: unknown) {
 }
 
 export function rewriteMicrosoftDocsUrl(url: URL) {
-  if (!url.hostname.match(/^docs\.microsoft\.com$/ui)) return null
+  if (url.hostname !== 'docs.microsoft.com') return null
 
-  const fragments = url.pathname.split('/')
-  const [, locale] = fragments
+  const englishLocale = 'en-us'
+  const pathnameFragments = url.pathname.split('/')
+  const [, localeFragment] = pathnameFragments
 
-  if (locale?.match(/^en-us$/ui)) return null
+  if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
 
-  if (locale?.match(/^[a-z]{2}-[a-z]{2}$/ui)) {
-    replaceAt(fragments, 1, 'en-us')
+  if (localeFragment?.match(/^[a-z]{2}-[a-z]{2}$/ui)) {
+    replaceAt(pathnameFragments, 1, englishLocale)
   } else {
-    insertAt(fragments, 1, 'en-us')
+    insertAt(pathnameFragments, 1, englishLocale)
   }
 
-  url.pathname = fragments.join('/')
+  url.pathname = pathnameFragments.join('/')
 
   return url
 }
 
 export function rewriteMozillaMdnUrl(url: URL) {
-  if (!url.hostname.match(/^developer\.mozilla\.org$/ui)) return null
+  if (url.hostname !== 'developer.mozilla.org') return null
 
-  const fragments = url.pathname.split('/')
+  const pathnameFragments = url.pathname.split('/')
+  const [, localeFragment, docsFragment] = pathnameFragments
 
-  const [, locale, docs] = fragments
+  if (!docsFragment || !caseInsensitiveStringEqual(docsFragment, 'docs')) return null
 
-  if (!docs || !docs.match(/^docs$/ui)) return null
+  const englishLocale = 'en-US'
 
-  if (locale?.match(/^en-US$/ui)) return null
+  if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
 
-  if (locale?.match(/^[a-z]{2}(?:-[a-z]{2})?$/ui)) {
-    replaceAt(fragments, 1, 'en-US')
+  if (localeFragment?.match(/^[a-z]{2}(?:-[a-z]{2})?$/ui)) {
+    replaceAt(pathnameFragments, 1, englishLocale)
   } else {
-    insertAt(fragments, 1, 'en-US')
+    insertAt(pathnameFragments, 1, englishLocale)
   }
 
-  url.pathname = fragments.join('/')
+  url.pathname = pathnameFragments.join('/')
 
   return url
 }
 
 export function rewriteReactJsUrl(url: URL) {
-  if (!url.hostname.match(/^[a-z]{2}\.reactjs\.org$/ui)) return null
+  if (!url.hostname.match(/^[a-z]{2}\.reactjs\.org$/u)) return null
 
-  const fragments = url.hostname.split('.')
+  const hostnameFragments = url.hostname.split('.')
 
-  if (fragments.length !== 3) return null
+  if (hostnameFragments.length !== 3) return null
 
-  const [locale] = fragments
+  const [localeFragment] = hostnameFragments
 
-  if (locale?.match(/^en$/ui)) return null
+  const englishLocale = 'en'
 
-  replaceAt(fragments, 0, 'en')
+  if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
 
-  url.hostname = fragments.join('.')
+  replaceAt(hostnameFragments, 0, englishLocale)
+
+  url.hostname = hostnameFragments.join('.')
 
   return url
 }
 
 export function rewriteFacebookDevelopersUrl(url: URL) {
-  if (!url.hostname.match(/^developers\.facebook\.com$/ui)) return null
+  if (url.hostname !== 'developers.facebook.com') return null
 
-  const locale = url.searchParams.get('locale')
+  const englishLocale = 'en_US'
+  const localeSearchParamValue = url.searchParams.get('locale')
 
-  if (locale?.match(/^en_US$/ui)) return null
+  if (localeSearchParamValue && caseInsensitiveStringEqual(localeSearchParamValue, englishLocale)) return null
 
-  url.searchParams.set('locale', 'en_US')
+  url.searchParams.set('locale', englishLocale)
 
   return url
 }
