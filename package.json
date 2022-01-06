@@ -42,6 +42,7 @@
     "build": "npm run build:parcel && cp manifest.json icon.svg dist && npm run build:web-ext",
     "build:destructive": "npm run build:parcel && cp manifest.json icon.svg dist && npm run build:web-ext:destructive",
     "clean:dist": "rimraf dist",
+    "clean": "npm run clean:dist",
     "watch:parcel": "parcel watch",
     "web-ext:dev": "web-ext run --verbose",
     "lint:eslint": "eslint .",
