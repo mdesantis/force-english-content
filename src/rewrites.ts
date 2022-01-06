@@ -10,11 +10,11 @@ export function rewriteMicrosoftDocsUrl(url: URL) {
   if (!url.hostname.match(/^docs\.microsoft\.com$/ui)) return null
 
   const fragments = url.pathname.split('/')
-  const [, localeCandidate = ''] = fragments
+  const [, locale] = fragments
 
-  if (localeCandidate.match(/^en-us$/ui)) return null
+  if (locale?.match(/^en-us$/ui)) return null
 
-  if (localeCandidate.match(/^[a-z]{2}-[a-z]{2}$/ui)) {
+  if (locale?.match(/^[a-z]{2}-[a-z]{2}$/ui)) {
     replaceAt(fragments, 1, 'en-us')
   } else {
     insertAt(fragments, 1, 'en-us')
@@ -30,13 +30,13 @@ export function rewriteMozillaMdnUrl(url: URL) {
 
   const fragments = url.pathname.split('/')
 
-  if (!fragments[2] || !fragments[2].match(/^docs$/ui)) return null
+  const [, locale, docs] = fragments
 
-  const [, localeCandidate = ''] = fragments
+  if (!docs || !docs.match(/^docs$/ui)) return null
 
-  if (localeCandidate.match(/^en-US$/ui)) return null
+  if (locale?.match(/^en-US$/ui)) return null
 
-  if (localeCandidate.match(/^[a-z]{2}(?:-[a-z]{2})?$/ui)) {
+  if (locale?.match(/^[a-z]{2}(?:-[a-z]{2})?$/ui)) {
     replaceAt(fragments, 1, 'en-US')
   } else {
     insertAt(fragments, 1, 'en-US')
@@ -54,9 +54,9 @@ export function rewriteReactJsUrl(url: URL) {
 
   if (fragments.length !== 3) return null
 
-  const [localeCandidate = ''] = fragments
+  const [locale] = fragments
 
-  if (localeCandidate.match(/^en$/ui)) return null
+  if (locale?.match(/^en$/ui)) return null
 
   replaceAt(fragments, 0, 'en')
 
@@ -70,7 +70,7 @@ export function rewriteFacebookDevelopersUrl(url: URL) {
 
   const locale = url.searchParams.get('locale')
 
-  if (locale && locale.match(/^en_US$/ui)) return null
+  if (locale?.match(/^en_US$/ui)) return null
 
   url.searchParams.set('locale', 'en_US')
 
