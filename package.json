@@ -29,7 +29,6 @@
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "mocha": "^9.1.3",
     "parcel": "^2.0.1",
-    "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4",
     "web-ext": "^6.6.0"
@@ -41,7 +40,7 @@
     "build:icons": "./scripts/build-icons.sh",
     "build:web-ext": "web-ext build --overwrite-dest",
     "build": "npm run build:parcel && npm run build:icons && npm run build:manifest && npm run build:web-ext",
-    "clean:dist": "rimraf dist",
+    "clean:dist": "rm -rf dist",
     "clean": "npm run clean:dist",
     "watch:parcel": "parcel watch",
     "web-ext:dev": "web-ext run --verbose",
