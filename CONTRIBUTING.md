@@ -18,5 +18,3 @@ Make your changes, then run:
 ```sh
 npm run test && npm run build && npm run lint
 ```
-
-to validate them.
