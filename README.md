@@ -53,7 +53,7 @@ icon to various PNG sizes.
 There is a setup script for Ubuntu which prepares your machine for development:
 
 ```sh
-./script/setup.sh
+./script/setup-ubuntu.sh
 ```
 
 ### Setup on other OSes
