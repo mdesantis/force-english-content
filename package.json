@@ -34,23 +34,23 @@
     "web-ext": "^6.6.0"
   },
   "scripts": {
+    "build:icons": "./scripts/build-icons.sh",
+    "build:manifest": "mkdir -p dist && cp manifest.json dist",
     "build:parcel:dev": "parcel build --no-optimize",
     "build:parcel": "parcel build",
-    "build:manifest": "mkdir -p dist && cp manifest.json dist",
-    "build:icons": "./scripts/build-icons.sh",
     "build:web-ext": "web-ext build --overwrite-dest",
     "build": "npm run build:parcel && npm run build:icons && npm run build:manifest && npm run build:web-ext",
     "clean:dist": "rm -rf dist",
     "clean": "npm run clean:dist",
-    "watch:parcel": "parcel watch",
-    "web-ext:dev": "web-ext run --verbose",
     "lint:eslint": "eslint .",
-    "lint:web-ext": "web-ext lint",
     "lint:tsc": "tsc",
+    "lint:web-ext": "web-ext lint",
     "lint": "npm run lint:eslint && npm run lint:tsc && npm run lint:web-ext",
-    "test": "mocha",
     "test:watch": "mocha --watch",
-    "version:change": "./scripts/change-version.sh"
+    "test": "mocha",
+    "version:change": "./scripts/change-version.sh",
+    "watch:parcel": "parcel watch",
+    "web-ext:dev": "web-ext run --verbose"
   },
   "webExt": {
     "sourceDir": "dist/"
