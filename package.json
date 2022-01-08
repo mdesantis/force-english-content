@@ -46,9 +46,12 @@
     "lint:tsc": "tsc",
     "lint:web-ext": "web-ext lint",
     "lint": "npm run lint:eslint && npm run lint:tsc && npm run lint:web-ext",
+    "postversion": "git push && git push --tags",
+    "preversion": "npm run test && npm run build && npm run lint",
     "test:watch": "mocha --watch",
     "test": "mocha",
-    "version:change": "./scripts/change-version.sh",
+    "version:echo": "echo $npm_package_version",
+    "version": "./scripts/bump-manifest-version.sh && git add manifest.json",
     "watch:parcel": "parcel watch",
     "web-ext:dev": "web-ext run --verbose"
   },
