@@ -45,8 +45,9 @@ necessity anyway. So have fun instead of being confused!
 
 ### Dependencies
 
-This project uses Inkscape as development dependency in order to convert SVG
-icon to various PNG sizes.
+This project uses `bash` for [scripts](./scripts), `sed` for the [change version
+script](./scripts/change-version.sh), and Inkscape for the [build icons
+script](./scripts/build-icons.sh).
 
 ### Setup on Ubuntu
 
@@ -58,7 +59,7 @@ There is a setup script for Ubuntu which prepares your machine for development:
 
 ### Setup on other OSes
 
-Install Inkscape and NodeJS and you're good to go.
+Install Bash, Sed, Inkscape and NodeJS and you're good to go.
 
 ## Acknowledgements
 
