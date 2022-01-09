@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install build dependencies
+        run: sudo apt-get install -y bash sed inkscape
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+          cache: 'npm'
+      - name: Prepare Release
+        run: |
+          npm ci
+          npm run build
+          npx web-ext sign --channel listed --api-key ${{ secrets.AMO_API_KEY }} --api-secret ${{ secrets.AMO_API_SECRET }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: web-ext-artifacts/*.xpi
