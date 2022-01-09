@@ -4,6 +4,9 @@
 
 # [Force English Content](https://github.com/mdesantis/force-english-content#readme)
 
+> Forces localised web pages with poor or outdated translations to redirect to
+> the original English content.
+
 Developer documentation content from many popular websites serving technical
 documentation—[Microsoft Docs](https://docs.microsoft.com), [Mozilla
 MDN](https://developer.mozilla.org), [ReactJS](https://reactjs.org), [Facebook
