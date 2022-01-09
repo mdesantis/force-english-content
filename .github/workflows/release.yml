@@ -22,7 +22,8 @@ jobs:
         run: |
           npm ci
           npm run build
-          npx web-ext sign --channel listed --api-key ${{ secrets.AMO_API_KEY }} --api-secret ${{ secrets.AMO_API_SECRET }}
+      - name: Submit to AMO
+        run: npx web-ext-submit --api-key ${{ secrets.AMO_API_KEY }} --api-secret ${{ secrets.AMO_API_SECRET }}
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
