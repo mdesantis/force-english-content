@@ -5,5 +5,7 @@ set -o pipefail
 set -o nounset
 
 version=$(npm run version:echo --silent)
+tempfile=$(mktemp)
 
-sed --in-place --regexp-extended 's/(^  "version": ").+(",?$)/\1'"${version}"'\2/' manifest.json
+jq '.version = "'"${version}"'"' manifest.json > "${tempfile}"
+mv "${tempfile}" manifest.json

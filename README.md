@@ -45,7 +45,7 @@ necessity anyway. So have fun instead of being confused!
 
 ### Dependencies
 
-This project uses `bash` for [scripts](./scripts), `sed` for the [change version
+This project uses Bash for [scripts](./scripts), jq for the [change version
 script](./scripts/change-version.sh), and Inkscape for the [build icons
 script](./scripts/build-icons.sh).
 
@@ -59,7 +59,7 @@ There is a setup script for Ubuntu which prepares your machine for development:
 
 ### Setup on other OSes
 
-Install Bash, Sed, Inkscape and NodeJS and you're good to go.
+Install Bash, jq, Inkscape and NodeJS and you're good to go.
 
 ## Acknowledgements
 
