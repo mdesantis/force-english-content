@@ -4,6 +4,17 @@
 
 # [Force English Content](https://github.com/mdesantis/force-english-content#readme)
 
+<p align="center">
+  <a href="https://addons.mozilla.org/it/firefox/addon/force-english-content/">
+    <img alt="Mozilla Add-on" src="https://img.shields.io/amo/v/%7B45b75146-960d-47e4-b45f-c642ae8a336d%7D"></a>
+  <a href="https://github.com/mdesantis/force-english-content#licensing">
+    <img alt="License" src="https://img.shields.io/github/license/mdesantis/force-english-content"></a>
+  <a href="https://github.com/mdesantis/force-english-content/actions/workflows/ci.yml">
+    <img alt="CI" src="https://img.shields.io/github/workflow/status/mdesantis/force-english-content/CI"></a>
+  <a href="https://github.com/mdesantis/force-english-content/blob/main/manifest.json">
+    <img alt="manifest.json permissions" src="https://img.shields.io/github/manifest-json/permissions/mdesantis/force-english-content"></a>
+</p>
+
 > Forces localised web pages with poor or outdated translations to redirect to
 > the original English content.
 
