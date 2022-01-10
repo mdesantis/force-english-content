@@ -44,7 +44,7 @@ server for the localised site.
 
 The only requirement that this extension imposes on you is that you should be
 able to understand English developer documentation easily. I consider this a
-necessity anyway. So have fun instead of being confused!
+necessity anyway. So have fun instead of being confused! :gb:
 
 ## Features
 
