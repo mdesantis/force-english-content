@@ -6,3 +6,9 @@ dist
 
 # Web Extensions tool (web-ext) artifacts
 web-ext-artifacts
+
+# Istanbul's nyc
+.nyc_output
+
+# Coverage reports directory
+coverage

@@ -16,5 +16,5 @@ setup the project locally on your machine.
 Make your changes, then run:
 
 ```sh
-npm run test && npm run build && npm run lint
+npx nyc npm test && npm run build && npm run lint
 ```

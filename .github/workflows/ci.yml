@@ -31,4 +31,10 @@ jobs:
     - run: npm ci
     - run: npm run build
     - run: npm run lint
-    - run: npm test
+    - run: npx nyc --reporter=lcov npm test
+    - run: npx codecov
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        fail_ci_if_error: true
+        verbose: true
