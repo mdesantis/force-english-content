@@ -18,10 +18,8 @@ jobs:
         with:
           node-version: 14.x
           cache: 'npm'
-      - name: Prepare Release
-        run: |
-          npm ci
-          npm run build
+      - run: npm ci
+      - run: npm run build
       - name: Submit to AMO
         run: npx web-ext-submit --api-key ${{ secrets.AMO_API_KEY }} --api-secret ${{ secrets.AMO_API_SECRET }}
       - name: Release
