@@ -75,6 +75,10 @@ There is a setup script for Ubuntu which prepares your machine for development:
 
 Install Bash, jq, Inkscape and NodeJS and you're good to go.
 
+## Contributing
+
+See [Contributing](CONTRIBUTING.md).
+
 ## Acknowledgements
 
 This extension is a revamp of [English
