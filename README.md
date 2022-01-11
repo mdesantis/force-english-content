@@ -5,7 +5,7 @@
 # [Force English Content](https://github.com/mdesantis/force-english-content#readme)
 
 <p align="center">
-  <a href="https://addons.mozilla.org/it/firefox/addon/force-english-content/">
+  <a href="https://addons.mozilla.org/firefox/addon/force-english-content/">
     <img alt="Mozilla Add-on" src="https://img.shields.io/amo/v/%7B45b75146-960d-47e4-b45f-c642ae8a336d%7D"></a>
   <a href="https://github.com/mdesantis/force-english-content#licensing">
     <img alt="License" src="https://img.shields.io/github/license/mdesantis/force-english-content"></a>
@@ -56,6 +56,10 @@ necessity anyway. So have fun instead of being confused! :gb:
 - Redirects `https://{non-en-locale}.reactjs.org/*` to `https://reactjs.org/*`
 - Redirects `https://developer.facebook.com/*` to
   `https://developer.facebook.com/*?locale=en_US`
+
+## Installation
+
+- On Firefox: https://addons.mozilla.org/firefox/addon/force-english-content/
 
 ## Development
 
