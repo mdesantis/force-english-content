@@ -8,6 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        command:
+          - firefox
+          - chrome
     steps:
       - name: Install build dependencies
         run: sudo apt-get install -y bash inkscape jq
@@ -20,9 +26,25 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
-      - name: Submit to AMO
-        run: npx web-ext-submit --api-key ${{ secrets.AMO_API_KEY }} --api-secret ${{ secrets.AMO_API_SECRET }}
+      - name: Submit
+        run: |
+          case ${{ matrix.command }} in
+            chrome)
+              npx chrome-webstore-upload-cli upload --auto-publish --source web-ext-artifacts/*.zip
+              ;;
+            firefox)
+              npx web-ext-submit
+              ;;
+          esac
+        env:
+          EXTENSION_ID: ${{ secrets.CHROME_EXTENSION_ID }}
+          CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
+          REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+          WEB_EXT_API_KEY: ${{ secrets.AMO_API_KEY }}
+          WEB_EXT_API_SECRET: ${{ secrets.AMO_API_SECRET }}
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: web-ext-artifacts/*.xpi
+          files: |
+            web-ext-artifacts/*.zip
+            web-ext-artifacts/*.xpi
