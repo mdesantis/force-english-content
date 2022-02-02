@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Force English Content",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Forces localised web pages with poor or outdated translations to redirect to the original English content.",
   "homepage_url": "https://github.com/mdesantis/force-english-content",
   "author": "Maurizio De Santis",
