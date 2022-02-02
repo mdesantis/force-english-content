@@ -7,6 +7,8 @@
 <p align="center">
   <a href="https://addons.mozilla.org/firefox/addon/force-english-content/">
     <img alt="Mozilla Add-on" src="https://img.shields.io/amo/v/%7B45b75146-960d-47e4-b45f-c642ae8a336d%7D"></a>
+  <a href="https://chrome.google.com/webstore/detail/force-english-content/kglfhodlninopcgjohfeephcddibbome/">
+    <img alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/v/kglfhodlninopcgjohfeephcddibbome"></a>
   <a href="https://github.com/mdesantis/force-english-content#licensing">
     <img alt="License" src="https://img.shields.io/github/license/mdesantis/force-english-content"></a>
   <a href="https://github.com/mdesantis/force-english-content/actions/workflows/ci.yml">
@@ -16,6 +18,8 @@
   <a href="https://github.com/mdesantis/force-english-content/blob/main/manifest.json">
     <img alt="manifest.json permissions" src="https://img.shields.io/github/manifest-json/permissions/mdesantis/force-english-content"></a>
 </p>
+
+
 
 > Forces localised web pages with poor or outdated translations to redirect to
 > the original English content.
@@ -59,7 +63,8 @@ necessity anyway. So have fun instead of being confused! :gb:
 
 ## Installation
 
-- On Firefox: https://addons.mozilla.org/firefox/addon/force-english-content/
+- Chrome Web Store: https://chrome.google.com/webstore/detail/force-english-content/kglfhodlninopcgjohfeephcddibbome/
+- Mozilla Add-on: https://addons.mozilla.org/firefox/addon/force-english-content/
 
 ## Development
 
