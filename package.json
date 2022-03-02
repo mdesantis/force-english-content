@@ -21,7 +21,7 @@
     "@tsconfig/recommended": "^1.0.1",
     "@types/mocha": "^9.1.0",
     "@types/webextension-polyfill": "^0.8.2",
-    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.10.2",
     "chrome-webstore-upload-cli": "^2.0.1",
     "codecov": "^3.8.3",
