@@ -13,7 +13,7 @@
       "outputFormat": "global"
     }
   },
-  "browserslist": "Firefox ESR",
+  "browserslist": "Firefox ESR, last 10 Chrome versions",
   "dependencies": {
     "webextension-polyfill": "^0.8.0"
   },
