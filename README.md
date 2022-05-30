@@ -86,9 +86,20 @@ There is a setup script for Ubuntu which prepares your machine for development:
 
 Install Bash, jq, Inkscape and NodeJS and you're good to go.
 
+### Workflow
+
+Make your changes, then run:
+
+```sh
+npx nyc npm test && npm run build && npm run lint
+```
+
 ## Contributing
 
-See [Contributing](CONTRIBUTING.md).
+Contributions are welcome and straightforward to submit, as this is a one-man
+project. Just open an
+[issue](/https://github.com/mdesantis/force-english-content/issues) or create a
+[pull request](https://github.com/mdesantis/force-english-content/pulls) directly.
 
 ## Acknowledgements
 
