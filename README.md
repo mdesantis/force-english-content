@@ -90,11 +90,6 @@ Install Bash, jq, Inkscape and NodeJS and you're good to go.
 
 See [Contributing](CONTRIBUTING.md).
 
-## Supporting
-
-If you like this project and want to show your gratitude, you can [buy me a
-coffee :coffee:](https://liberapay.com/mdesantis/donate).
-
 ## Acknowledgements
 
 This extension is a revamp of [English
