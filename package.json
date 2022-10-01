@@ -25,7 +25,7 @@
     "@typescript-eslint/parser": "^5.36.1",
     "chrome-webstore-upload-cli": "^2.1.0",
     "codecov": "^3.8.3",
-    "eslint": "^8.21.0",
+    "eslint": "^8.24.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-no-constructor-bind": "^2.0.4",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
