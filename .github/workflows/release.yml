@@ -16,7 +16,7 @@ jobs:
           - chrome
     steps:
       - name: Install build dependencies
-        run: sudo apt-get install -y bash inkscape jq
+        run: sudo apt-get update && sudo apt-get install -y bash inkscape jq
       - name: Checkout
         uses: actions/checkout@v2
       - name: Use Node.js 14.x

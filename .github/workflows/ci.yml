@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - name: Install build dependencies
-      run: sudo apt-get install -y bash inkscape jq
+      run: sudo apt-get update && sudo apt-get install -y bash inkscape jq
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
