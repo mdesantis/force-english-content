@@ -35,7 +35,7 @@
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4",
     "web-ext": "^7.1.1",
-    "web-ext-submit": "^7.2.0"
+    "web-ext-submit": "^7.3.1"
   },
   "scripts": {
     "build:assets:icons": "./scripts/build-icons.sh",
