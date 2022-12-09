@@ -50,7 +50,7 @@
     "clean": "npm run clean:dist && npm run clean:web-ext-artifacts",
     "lint:eslint": "eslint .",
     "lint:tsc": "tsc",
-    "lint:web-ext": "web-ext lint --firefox-preview",
+    "lint:web-ext": "web-ext lint --source-dir dist-firefox",
     "lint": "npm run lint:eslint && npm run lint:tsc && npm run lint:web-ext",
     "postversion": "git push && git push --tags",
     "preversion": "npm run test && npm run build && npm run lint",
