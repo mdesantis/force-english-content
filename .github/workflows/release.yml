@@ -46,5 +46,5 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            web-ext-artifacts/**/.zip
-            web-ext-artifacts/**/.xpi
+            web-ext-artifacts/chrome/*.zip
+            web-ext-artifacts/firefox/*.zip
