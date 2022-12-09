@@ -15,8 +15,10 @@
     <img alt="CI" src="https://img.shields.io/github/workflow/status/mdesantis/force-english-content/CI"></a>
   <a href="https://app.codecov.io/gh/mdesantis/force-english-content">
     <img alt="Codecov" src="https://img.shields.io/codecov/c/gh/mdesantis/force-english-content"></a>
-  <a href="https://github.com/mdesantis/force-english-content/blob/main/manifest.json">
-    <img alt="manifest.json permissions" src="https://img.shields.io/github/manifest-json/permissions/mdesantis/force-english-content"></a>
+  <a href="https://github.com/mdesantis/force-english-content/blob/main/manifest-firefox.json">
+    <img alt="manifest.json permissions for Firefox" src="https://img.shields.io/github/manifest-json/permissions/mdesantis/force-english-content"></a>
+  <a href="https://github.com/mdesantis/force-english-content/blob/main/manifest-chrome.json">
+    <img alt="manifest.json permissions for Chrome" src="https://img.shields.io/github/manifest-json/permissions/mdesantis/force-english-content"></a>
 </p>
 
 
