@@ -1,0 +1,34 @@
+{
+  "manifest_version": 2,
+  "name": "Force English Content",
+  "version": "1.0.12",
+  "description": "Forces localised web pages with poor or outdated translations to redirect to the original English content.",
+  "homepage_url": "https://github.com/mdesantis/force-english-content",
+  "author": "Maurizio De Santis",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{45b75146-960d-47e4-b45f-c642ae8a336d}"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "64": "icon64.png",
+    "96": "icon96.png",
+    "128": "icon128.png"
+  },
+  "permissions": [
+    "webRequest",
+    "tabs",
+    "*://docs.microsoft.com/*",
+    "*://developer.mozilla.org/*",
+    "*://*.reactjs.org/*",
+    "*://developers.facebook.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+}

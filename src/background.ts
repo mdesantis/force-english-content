@@ -13,7 +13,7 @@ type OnBeforeRequestFilterType = OnBeforeRequestListenerParametersType[1]
 type OnBeforeRequestOptionsType = OnBeforeRequestListenerParametersType[2]
 type OnBeforeRequestDetailsType = Parameters<OnBeforeRequestListenerCallbackType>[0]
 
-function handleBeforeRequest({ 'url': urlAsString }: OnBeforeRequestDetailsType) {
+function handleBeforeRequest({ tabId, 'url': urlAsString }: OnBeforeRequestDetailsType) {
   const url = new URL(urlAsString)
 
   const rewrittenUrlFns = [
@@ -26,7 +26,10 @@ function handleBeforeRequest({ 'url': urlAsString }: OnBeforeRequestDetailsType)
   for (const rewrittenUrlFn of rewrittenUrlFns) {
     const redirectUrl = rewrittenUrlFn(url)
 
-    if (redirectUrl) return { 'redirectUrl': redirectUrl.toString() }
+    if (redirectUrl) {
+      browser.tabs.update(tabId, { 'url': redirectUrl.toString() })
+      return undefined
+    }
   }
 
   return undefined
@@ -41,7 +44,7 @@ export default function start() {
   ]
   const listener = handleBeforeRequest
   const filter: OnBeforeRequestFilterType = { 'types': ['main_frame'], urls }
-  const extraInfoSpec: OnBeforeRequestOptionsType = ['blocking']
+  const extraInfoSpec: OnBeforeRequestOptionsType = []
 
   browser.webRequest.onBeforeRequest.addListener(listener, filter, extraInfoSpec)
 }

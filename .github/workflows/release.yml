@@ -30,10 +30,10 @@ jobs:
         run: |
           case ${{ matrix.command }} in
             chrome)
-              npx chrome-webstore-upload-cli upload --auto-publish --source web-ext-artifacts/*.zip
+              npx chrome-webstore-upload-cli upload --auto-publish --source web-ext-artifacts/chrome/*.zip
               ;;
             firefox)
-              npx web-ext-submit
+              npx web-ext-submit --artifacts-dir web-ext-artifacts/firefox
               ;;
           esac
         env:
@@ -46,5 +46,5 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            web-ext-artifacts/*.zip
-            web-ext-artifacts/*.xpi
+            web-ext-artifacts/**/.zip
+            web-ext-artifacts/**/.xpi
