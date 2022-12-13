@@ -19,6 +19,7 @@
   ],
   "host_permissions": [
     "*://docs.microsoft.com/*",
+    "*://learn.microsoft.com/*",
     "*://developer.mozilla.org/*",
     "*://*.reactjs.org/*",
     "*://developers.facebook.com/*"

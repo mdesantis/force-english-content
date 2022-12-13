@@ -42,6 +42,26 @@ export function rewriteMicrosoftDocsUrl(url: URL) {
   return url
 }
 
+export function rewriteMicrosoftLearnUrl(url: URL) {
+  if (url.hostname !== 'learn.microsoft.com') return null
+
+  const englishLocale = 'en-us'
+  const pathnameFragments = url.pathname.split('/')
+  const [, localeFragment] = pathnameFragments
+
+  if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
+
+  if (localeFragment?.match(/^[a-z]{2}-[a-z]{2}$/ui)) {
+    replaceAt(pathnameFragments, 1, englishLocale)
+  } else {
+    insertAt(pathnameFragments, 1, englishLocale)
+  }
+
+  url.pathname = pathnameFragments.join('/')
+
+  return url
+}
+
 export function rewriteMozillaMdnUrl(url: URL) {
   if (url.hostname !== 'developer.mozilla.org') return null
 
