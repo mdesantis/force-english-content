@@ -3,6 +3,7 @@ import browser from 'webextension-polyfill'
 import {
   rewriteFacebookDevelopersUrl,
   rewriteMicrosoftDocsUrl,
+  rewriteMicrosoftLearnUrl,
   rewriteMozillaMdnUrl,
   rewriteReactJsUrl
 } from './rewrites'
@@ -18,6 +19,7 @@ function handleBeforeRequest({ tabId, 'url': urlAsString }: OnBeforeRequestDetai
 
   const rewrittenUrlFns = [
     rewriteMicrosoftDocsUrl,
+    rewriteMicrosoftLearnUrl,
     rewriteMozillaMdnUrl,
     rewriteReactJsUrl,
     rewriteFacebookDevelopersUrl
@@ -38,6 +40,7 @@ function handleBeforeRequest({ tabId, 'url': urlAsString }: OnBeforeRequestDetai
 export default function start() {
   const urls = [
     '*://docs.microsoft.com/*',
+    '*://learn.microsoft.com/*',
     '*://developer.mozilla.org/*',
     '*://*.reactjs.org/*',
     '*://developers.facebook.com/*'

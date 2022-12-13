@@ -4,6 +4,7 @@ import assert from 'assert'
 import {
   rewriteFacebookDevelopersUrl,
   rewriteMicrosoftDocsUrl,
+  rewriteMicrosoftLearnUrl,
   rewriteMozillaMdnUrl,
   rewriteReactJsUrl
 } from './rewrites'
@@ -138,6 +139,51 @@ describe('ForceEnglishContent', () => {
       })
     })
   })
+
+  describe('rewriteMicrosoftLearnUrl()', () => {
+    const describedFunction = rewriteMicrosoftLearnUrl
+
+    describe('when the domain does not match', () => {
+      const urlAsString = 'https://www.microsoft.com'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+    })
+    describe('when the are no URL pathname fragments', () => {
+      const urlAsString = 'https://learn.microsoft.com'
+      const expectedUrlAsString = 'https://learn.microsoft.com/en-us/'
+      const upperCaseExpectedUrlAsString = 'https://learn.microsoft.com/en-us/'
+      const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+      shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+    })
+    describe('when the first URL pathname fragment is "en-us"', () => {
+      const urlAsString = 'https://learn.microsoft.com/en-us'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+      describe('and there are more pathname fragments', () => {
+        const urlAsString = 'https://learn.microsoft.com/en-us/one/two/three'
+
+        shouldNotDoAnything(describedFunction, urlAsString)
+      })
+    })
+    describe('when the first URL pathname fragment is "it-it"', () => {
+      const urlAsString = 'https://learn.microsoft.com/it-it'
+      const expectedUrlAsString = 'https://learn.microsoft.com/en-us'
+      const upperCaseExpectedUrlAsString = 'https://learn.microsoft.com/en-us'
+      const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+      shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      describe('and there are more pathname fragments', () => {
+        const urlAsString = 'https://learn.microsoft.com/it-it/one/two/three'
+        const expectedUrlAsString = 'https://learn.microsoft.com/en-us/one/two/three'
+        const upperCaseExpectedUrlAsString = 'https://learn.microsoft.com/en-us/ONE/TWO/THREE'
+        const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+        shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      })
+    })
+  })
+
   describe('rewriteMozillaMdnUrl()', () => {
     const describedFunction = rewriteMozillaMdnUrl
 
@@ -190,6 +236,7 @@ describe('ForceEnglishContent', () => {
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
       })
     })
+
     describe('when there are three URL pathname fragments', () => {
       const urlAsString = 'https://developer.mozilla.org/one/two/three'
 
@@ -225,6 +272,7 @@ describe('ForceEnglishContent', () => {
       })
     })
   })
+
   describe('rewriteReactJsUrl()', () => {
     const describedFunction = rewriteReactJsUrl
 
@@ -260,6 +308,7 @@ describe('ForceEnglishContent', () => {
       shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString)
     })
   })
+
   describe('rewriteFacebookDevelopersUrl()', () => {
     const describedFunction = rewriteFacebookDevelopersUrl
 

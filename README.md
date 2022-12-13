@@ -17,13 +17,12 @@
     <img alt="Codecov" src="https://img.shields.io/codecov/c/gh/mdesantis/force-english-content"></a>
 </p>
 
-
-
 > Forces localised web pages with poor or outdated translations to redirect to
 > the original English content.
 
 Developer documentation content from many popular websites serving technical
-documentation—[Microsoft Docs](https://docs.microsoft.com), [Mozilla
+documentation—[Microsoft Docs](https://docs.microsoft.com), [Microsoft
+Learn](https://learn.microsoft.com), [Mozilla
 MDN](https://developer.mozilla.org), [ReactJS](https://reactjs.org), [Facebook
 Developers](https://developers.facebook.com)—is offered in many different
 languages. While this is normally a welcome idea, it is badly implemented by
@@ -39,8 +38,8 @@ content.
 This extension fixes all these problems. Whenever it sees you accessing a
 localised site, it swiftly redirects you to the original content so that you get
 the most accurate information available. This works for direct access to
-docs.microsoft.com, also from web search results, as well as the online
-help search initiated through the Visual Studio code editor by pressing
+docs.microsoft.com, also from web search results, as well as the online help
+search initiated through the Visual Studio code editor by pressing
 <kbd>F1</kbd>. Redirection is performed quickly before you even reach out to the
 server for the localised site.
 
@@ -48,16 +47,14 @@ The only requirement that this extension imposes on you is that you should be
 able to understand English developer documentation easily. I consider this a
 necessity anyway. So have fun instead of being confused! :gb:
 
-## Features
+## Supported sites
 
-- Redirects `https://docs.microsoft.com` to `https://docs.microsoft.com/en-us`
-- Redirects `https://docs.microsoft.com/{non-en-locale}/*` to
-  `https://docs.microsoft.com/en-us/*`
-- Redirects `https://developer.mozilla.org/{non-en-locale}/docs/*` to
-  `https://developer.mozilla.org/en-US/docs/*`
-- Redirects `https://{non-en-locale}.reactjs.org/*` to `https://reactjs.org/*`
-- Redirects `https://developer.facebook.com/*` to
-  `https://developer.facebook.com/*?locale=en_US`
+- [docs.microsoft.com](https://docs.microsoft.com)
+- [learn.microsoft.com](https://learn.microsoft.com)
+- [developer.mozilla.org](https://developer.mozilla.org/docs)
+- [reactjs.org](https://reactjs.org)
+- [developer.facebook.com](https://developer.facebook.com)
+- [***Whatever!***](https://github.com/mdesantis/force-english-content/issues/new?labels=enhancement&title=Add%20support%20for%20www.example.com&body=Hello!%20Is%20it%20possible%20to%20rewrite%20%60http%3A%2F%2Fwww.example.com%60%20to%20%60http%3A%2F%2Fwww.example.com/en-US%60%3F%20Thanks!)
 
 ## Installation
 
