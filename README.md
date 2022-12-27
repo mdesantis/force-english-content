@@ -66,7 +66,7 @@ necessity anyway. So have fun instead of being confused! :gb:
 ### Dependencies
 
 This project uses Bash for [scripts](./scripts), jq for the [bump manifest
-version script](./scripts/bump-manifest-version.sh), and Inkscape for the [build
+version script](./scripts/update-manifests-extension-version.sh), and Inkscape for the [build
 icons script](./scripts/build-icons.sh).
 
 ### Setup on Ubuntu
