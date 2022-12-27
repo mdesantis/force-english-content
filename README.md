@@ -4,16 +4,11 @@
 
 # [Force English Content](https://github.com/mdesantis/force-english-content#readme)
 
-<a href="https://addons.mozilla.org/firefox/addon/force-english-content/">
-  <img alt="Mozilla Add-on" src="https://img.shields.io/amo/v/%7B45b75146-960d-47e4-b45f-c642ae8a336d%7D"></a>
-<a href="https://chrome.google.com/webstore/detail/force-english-content/kglfhodlninopcgjohfeephcddibbome/">
-  <img alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/v/kglfhodlninopcgjohfeephcddibbome"></a>
-<a href="https://github.com/mdesantis/force-english-content#licensing">
-  <img alt="License" src="https://img.shields.io/github/license/mdesantis/force-english-content"></a>
-<a href="https://github.com/mdesantis/force-english-content/actions/workflows/ci.yml">
-  <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/mdesantis/force-english-content/.github/workflows/ci.yml?branch=main"></a>
-<a href="https://app.codecov.io/gh/mdesantis/force-english-content">
-  <img alt="Codecov" src="https://img.shields.io/codecov/c/gh/mdesantis/force-english-content"></a>
+[![Mozilla Add-on](https://img.shields.io/amo/v/%7B45b75146-960d-47e4-b45f-c642ae8a336d%7D)](https://addons.mozilla.org/firefox/addon/force-english-content/)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/kglfhodlninopcgjohfeephcddibbome)](https://chrome.google.com/webstore/detail/force-english-content/kglfhodlninopcgjohfeephcddibbome/)
+[![License](https://img.shields.io/github/license/mdesantis/force-english-content)](https://github.com/mdesantis/force-english-content#licensing)
+[![CI](https://img.shields.io/github/actions/workflow/status/mdesantis/force-english-content/.github/workflows/ci.yml?branch=main)](https://github.com/mdesantis/force-english-content/actions/workflows/ci.yml)
+[![Codecov](https://img.shields.io/codecov/c/gh/mdesantis/force-english-content)](https://app.codecov.io/gh/mdesantis/force-english-content)
 
 </div>
 
