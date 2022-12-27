@@ -12,7 +12,7 @@
   <a href="https://github.com/mdesantis/force-english-content#licensing">
     <img alt="License" src="https://img.shields.io/github/license/mdesantis/force-english-content"></a>
   <a href="https://github.com/mdesantis/force-english-content/actions/workflows/ci.yml">
-    <img alt="CI" src="https://img.shields.io/github/workflow/status/mdesantis/force-english-content/CI"></a>
+    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/mdesantis/force-english-content/.github/workflows/ci.yml?branch=main"></a>
   <a href="https://app.codecov.io/gh/mdesantis/force-english-content">
     <img alt="Codecov" src="https://img.shields.io/codecov/c/gh/mdesantis/force-english-content"></a>
 </p>
