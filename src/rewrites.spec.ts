@@ -336,4 +336,102 @@ describe('ForceEnglishContent', () => {
       shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
     })
   })
+
+  describe('rewritePhpManualUrl()', () => {
+    const describedFunction = REWRITES['*://www.php.net/*']
+
+    describe('when the domain does not match', () => {
+      const urlAsString = 'https://www.php.org'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+    })
+    describe('when the are no URL pathname fragments', () => {
+      const urlAsString = 'https://www.php.net'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+    })
+    describe('when there is one URL pathname fragment', () => {
+      const urlAsString = 'https://www.php.net/one'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+      describe('and the first URL pathname fragment is "manual"', () => {
+        const urlAsString = 'https://www.php.net/manual'
+        const expectedUrlAsString = 'https://www.php.net/manual/en'
+        const upperCaseExpectedUrlAsString = 'https://www.php.net/MANUAL/en'
+        const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+        shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      })
+    })
+    describe('when there are two URL pathname fragments', () => {
+      const urlAsString = 'https://www.php.net/one/two'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+      describe('and the first URL pathname fragment is "manual"', () => {
+        const urlAsString = 'https://www.php.net/manual/two'
+        const expectedUrlAsString = 'https://www.php.net/manual/en/two'
+        const upperCaseExpectedUrlAsString = 'https://www.php.net/MANUAL/en/TWO'
+        const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+        shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      })
+      describe('and the second URL pathname fragment is "en"', () => {
+        const urlAsString = 'https://www.php.net/manual/en'
+
+        shouldNotDoAnything(describedFunction, urlAsString)
+      })
+      describe('and the second URL pathname fragment is "pt_BR"', () => {
+        const urlAsString = 'https://www.php.net/manual/pt_BR'
+        const expectedUrlAsString = 'https://www.php.net/manual/en'
+        const upperCaseExpectedUrlAsString = 'https://www.php.net/MANUAL/en'
+        const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+        shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      })
+      describe('and the first URL pathname fragment is "fr"', () => {
+        const urlAsString = 'https://www.php.net/manual/fr'
+        const expectedUrlAsString = 'https://www.php.net/manual/en'
+        const upperCaseExpectedUrlAsString = 'https://www.php.net/MANUAL/en'
+        const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+        shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      })
+    })
+
+    describe('when there are three URL pathname fragments', () => {
+      const urlAsString = 'https://www.php.net/one/two/three'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+      describe('and the first URL pathname fragment is "manual"', () => {
+        const urlAsString = 'https://www.php.net/manual/two/three'
+        const expectedUrlAsString = 'https://www.php.net/manual/en/two/three'
+        const upperCaseExpectedUrlAsString = 'https://www.php.net/MANUAL/en/TWO/THREE'
+        const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+        shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+        describe('and the second URL pathname fragment is "en"', () => {
+          const urlAsString = 'https://www.php.net/manual/en/three'
+
+          shouldNotDoAnything(describedFunction, urlAsString)
+        })
+        describe('and the second URL pathname fragment is "pt_BR"', () => {
+          const urlAsString = 'https://www.php.net/manual/pt_BR/three'
+          const expectedUrlAsString = 'https://www.php.net/manual/en/three'
+          const upperCaseExpectedUrlAsString = 'https://www.php.net/MANUAL/en/THREE'
+          const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+          shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+        })
+        describe('and the first URL pathname fragment is "fr"', () => {
+          const urlAsString = 'https://www.php.net/manual/fr/three'
+          const expectedUrlAsString = 'https://www.php.net/manual/en/three'
+          const upperCaseExpectedUrlAsString = 'https://www.php.net/MANUAL/en/THREE'
+          const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+          shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+        })
+      })
+    })
+  })
 })
+

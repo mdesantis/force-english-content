@@ -22,7 +22,8 @@
     "*://learn.microsoft.com/*",
     "*://developer.mozilla.org/*",
     "*://*.reactjs.org/*",
-    "*://developers.facebook.com/*"
+    "*://developers.facebook.com/*",
+    "*://www.php.net/*"
   ],
   "background": {
     "service_worker": "background.js"
