@@ -28,11 +28,8 @@ others that were accessing updated and corrected English content.
 
 This extension fixes all these problems. Whenever it sees you accessing a
 localised site, it swiftly redirects you to the original content so that you get
-the most accurate information available. This works for direct access to
-docs.microsoft.com, also from web search results, as well as the online help
-search initiated through the Visual Studio code editor by pressing
-<kbd>F1</kbd>. Redirection is performed quickly before you even reach out to the
-server for the localised site.
+the most accurate information available. Redirection is performed quickly before
+you even reach out to the server for the localised site.
 
 The only requirement that this extension imposes on you is that you should be
 able to understand English developer documentation easily. I consider this a
