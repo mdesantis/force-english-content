@@ -22,7 +22,7 @@ function insertAt(array: unknown[], index: number, element: unknown) {
   return array.splice(index, 0, element)
 }
 
-export function rewriteMicrosoftDocsUrl(url: URL) {
+function rewriteMicrosoftDocsUrl(url: URL) {
   if (url.hostname !== 'docs.microsoft.com') return null
 
   const englishLocale = 'en-us'
@@ -42,7 +42,7 @@ export function rewriteMicrosoftDocsUrl(url: URL) {
   return url
 }
 
-export function rewriteMicrosoftLearnUrl(url: URL) {
+function rewriteMicrosoftLearnUrl(url: URL) {
   if (url.hostname !== 'learn.microsoft.com') return null
 
   const englishLocale = 'en-us'
@@ -62,7 +62,7 @@ export function rewriteMicrosoftLearnUrl(url: URL) {
   return url
 }
 
-export function rewriteMozillaMdnUrl(url: URL) {
+function rewriteMozillaMdnUrl(url: URL) {
   if (url.hostname !== 'developer.mozilla.org') return null
 
   const pathnameFragments = url.pathname.split('/')
@@ -85,7 +85,7 @@ export function rewriteMozillaMdnUrl(url: URL) {
   return url
 }
 
-export function rewriteReactJsUrl(url: URL) {
+function rewriteReactJsUrl(url: URL) {
   if (!url.hostname.match(/^[a-z]{2}\.reactjs\.org$/u)) return null
 
   const hostnameFragments = url.hostname.split('.')
@@ -105,7 +105,7 @@ export function rewriteReactJsUrl(url: URL) {
   return url
 }
 
-export function rewriteFacebookDevelopersUrl(url: URL) {
+function rewriteFacebookDevelopersUrl(url: URL) {
   if (url.hostname !== 'developers.facebook.com') return null
 
   const englishLocale = 'en_US'
@@ -117,3 +117,13 @@ export function rewriteFacebookDevelopersUrl(url: URL) {
 
   return url
 }
+
+const REWRITES = {
+  '*://*.reactjs.org/*': rewriteReactJsUrl,
+  '*://developer.mozilla.org/*': rewriteMozillaMdnUrl,
+  '*://developers.facebook.com/*': rewriteFacebookDevelopersUrl,
+  '*://docs.microsoft.com/*': rewriteMicrosoftDocsUrl,
+  '*://learn.microsoft.com/*': rewriteMicrosoftLearnUrl
+}
+
+export default REWRITES

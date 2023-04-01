@@ -1,12 +1,6 @@
 import browser from 'webextension-polyfill'
 
-import {
-  rewriteFacebookDevelopersUrl,
-  rewriteMicrosoftDocsUrl,
-  rewriteMicrosoftLearnUrl,
-  rewriteMozillaMdnUrl,
-  rewriteReactJsUrl
-} from './rewrites'
+import REWRITES from './rewrites'
 
 type OnBeforeRequestListenerParametersType = Parameters<typeof browser.webRequest.onBeforeRequest.addListener>
 type OnBeforeRequestListenerCallbackType = OnBeforeRequestListenerParametersType[0]
@@ -14,19 +8,14 @@ type OnBeforeRequestFilterType = OnBeforeRequestListenerParametersType[1]
 type OnBeforeRequestOptionsType = OnBeforeRequestListenerParametersType[2]
 type OnBeforeRequestDetailsType = Parameters<OnBeforeRequestListenerCallbackType>[0]
 
+const rewriteUrlFns = Object.values(REWRITES)
+const filterUrls = Object.keys(REWRITES)
+
 function handleBeforeRequest({ tabId, 'url': urlAsString }: OnBeforeRequestDetailsType) {
   const url = new URL(urlAsString)
 
-  const rewrittenUrlFns = [
-    rewriteMicrosoftDocsUrl,
-    rewriteMicrosoftLearnUrl,
-    rewriteMozillaMdnUrl,
-    rewriteReactJsUrl,
-    rewriteFacebookDevelopersUrl
-  ]
-
-  for (const rewrittenUrlFn of rewrittenUrlFns) {
-    const redirectUrl = rewrittenUrlFn(url)
+  for (const rewriteUrlFn of rewriteUrlFns) {
+    const redirectUrl = rewriteUrlFn(url)
 
     if (redirectUrl) {
       browser.tabs.update(tabId, { 'url': redirectUrl.toString() })
@@ -38,15 +27,8 @@ function handleBeforeRequest({ tabId, 'url': urlAsString }: OnBeforeRequestDetai
 }
 
 export default function start() {
-  const urls = [
-    '*://docs.microsoft.com/*',
-    '*://learn.microsoft.com/*',
-    '*://developer.mozilla.org/*',
-    '*://*.reactjs.org/*',
-    '*://developers.facebook.com/*'
-  ]
   const listener = handleBeforeRequest
-  const filter: OnBeforeRequestFilterType = { 'types': ['main_frame'], urls }
+  const filter: OnBeforeRequestFilterType = { 'types': ['main_frame'], 'urls': filterUrls }
   const extraInfoSpec: OnBeforeRequestOptionsType = []
 
   browser.webRequest.onBeforeRequest.addListener(listener, filter, extraInfoSpec)

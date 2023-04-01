@@ -1,13 +1,7 @@
 
 import assert from 'assert'
 
-import {
-  rewriteFacebookDevelopersUrl,
-  rewriteMicrosoftDocsUrl,
-  rewriteMicrosoftLearnUrl,
-  rewriteMozillaMdnUrl,
-  rewriteReactJsUrl
-} from './rewrites'
+import REWRITES from './rewrites'
 
 function shouldReturnNull(describedFunction: (url: URL) => URL | null, urlAsString: string) {
   const url = new URL(urlAsString)
@@ -97,7 +91,7 @@ function shouldChangeUrlAndReturnIt(
 
 describe('ForceEnglishContent', () => {
   describe('rewriteMicrosoftDocsUrl()', () => {
-    const describedFunction = rewriteMicrosoftDocsUrl
+    const describedFunction = REWRITES['*://docs.microsoft.com/*']
 
     describe('when the domain does not match', () => {
       const urlAsString = 'https://www.microsoft.com'
@@ -141,7 +135,7 @@ describe('ForceEnglishContent', () => {
   })
 
   describe('rewriteMicrosoftLearnUrl()', () => {
-    const describedFunction = rewriteMicrosoftLearnUrl
+    const describedFunction = REWRITES['*://learn.microsoft.com/*']
 
     describe('when the domain does not match', () => {
       const urlAsString = 'https://www.microsoft.com'
@@ -185,7 +179,7 @@ describe('ForceEnglishContent', () => {
   })
 
   describe('rewriteMozillaMdnUrl()', () => {
-    const describedFunction = rewriteMozillaMdnUrl
+    const describedFunction = REWRITES['*://developer.mozilla.org/*']
 
     describe('when the domain does not match', () => {
       const urlAsString = 'https://www.mozilla.org'
@@ -274,7 +268,7 @@ describe('ForceEnglishContent', () => {
   })
 
   describe('rewriteReactJsUrl()', () => {
-    const describedFunction = rewriteReactJsUrl
+    const describedFunction = REWRITES['*://*.reactjs.org/*']
 
     describe('when the domain does not match', () => {
       const urlAsString = 'https://it.reactjs.com'
@@ -310,7 +304,7 @@ describe('ForceEnglishContent', () => {
   })
 
   describe('rewriteFacebookDevelopersUrl()', () => {
-    const describedFunction = rewriteFacebookDevelopersUrl
+    const describedFunction = REWRITES['*://developers.facebook.com/*']
 
     describe('when the domain does not match', () => {
       const urlAsString = 'https://developer.facebook.com'
