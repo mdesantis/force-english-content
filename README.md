@@ -50,12 +50,8 @@ necessity anyway. So have fun instead of being confused! :gb:
 
 ## Installation
 
-<div align="center">
-
-[![Mozilla Add-on](https://img.shields.io/amo/v/%7B45b75146-960d-47e4-b45f-c642ae8a336d%7D)](https://addons.mozilla.org/firefox/addon/force-english-content/)
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/kglfhodlninopcgjohfeephcddibbome)](https://chrome.google.com/webstore/detail/force-english-content/kglfhodlninopcgjohfeephcddibbome/)
-
-</div>
+- Chrome Web Store: https://chrome.google.com/webstore/detail/force-english-content/kglfhodlninopcgjohfeephcddibbome/
+- Mozilla Add-on: https://addons.mozilla.org/firefox/addon/force-english-content/
 
 ## Development
 
