@@ -15,12 +15,8 @@
 > Forces localised web pages with poor or outdated translations to redirect to
 > the original English content.
 
-Developer documentation content from many popular websites serving technical
-documentation—[Microsoft Docs](https://docs.microsoft.com), [Microsoft
-Learn](https://learn.microsoft.com), [Mozilla
-MDN](https://developer.mozilla.org), [ReactJS](https://reactjs.org), [Facebook
-Developers](https://developers.facebook.com), [PHP
-Docs](https://www.php.net/manual)—is offered in many different languages. While
+Developer documentation content from [many popular websites serving technical
+documentation](#supported-sites) is offered in many different languages. While
 this is normally a welcome idea, it is badly implemented by nagging the user
 with all sorts of changing messages and popups in translated content. Even
 worse, much of the content is simply machine-translated these days, making it
@@ -46,7 +42,7 @@ necessity anyway. So have fun instead of being confused! :gb:
 
 - [docs.microsoft.com](https://docs.microsoft.com)
 - [learn.microsoft.com](https://learn.microsoft.com)
-- [developer.mozilla.org](https://developer.mozilla.org/docs)
+- [developer.mozilla.org/docs](https://developer.mozilla.org/docs)
 - [reactjs.org](https://reactjs.org)
 - [developers.facebook.com](https://developers.facebook.com)
 - [www.php.net/manual](https://www.php.net/manual)
@@ -54,8 +50,12 @@ necessity anyway. So have fun instead of being confused! :gb:
 
 ## Installation
 
-- Chrome Web Store: https://chrome.google.com/webstore/detail/force-english-content/kglfhodlninopcgjohfeephcddibbome/
-- Mozilla Add-on: https://addons.mozilla.org/firefox/addon/force-english-content/
+<div align="center">
+
+[![Mozilla Add-on](https://img.shields.io/amo/v/%7B45b75146-960d-47e4-b45f-c642ae8a336d%7D)](https://addons.mozilla.org/firefox/addon/force-english-content/)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/kglfhodlninopcgjohfeephcddibbome)](https://chrome.google.com/webstore/detail/force-english-content/kglfhodlninopcgjohfeephcddibbome/)
+
+</div>
 
 ## Development
 
