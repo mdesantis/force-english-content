@@ -23,7 +23,8 @@
     "*://developer.mozilla.org/*",
     "*://*.reactjs.org/*",
     "*://developers.facebook.com/*",
-    "*://www.php.net/*"
+    "*://www.php.net/*",
+    "*://docs.python.org/*"
   ],
   "background": {
     "service_worker": "background.js"

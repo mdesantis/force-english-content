@@ -433,5 +433,79 @@ describe('ForceEnglishContent', () => {
       })
     })
   })
+
+  describe('rewritePythonDocsUrl()', () => {
+    const describedFunction = REWRITES['*://docs.python.org/*']
+
+    describe('when the domain does not match', () => {
+      const urlAsString = 'https://www.python.org'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+    })
+    describe('when the are no URL pathname fragments', () => {
+      const urlAsString = 'https://docs.python.org'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+    })
+    describe('when there is one URL pathname fragment', () => {
+      const urlAsString = 'https://docs.python.org/one'
+      const expectedUrlAsString = 'https://docs.python.org/en/one'
+      const upperCaseExpectedUrlAsString = 'https://docs.python.org/en/ONE'
+      const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+      shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      describe('and the first URL pathname fragment is "en"', () => {
+        const urlAsString = 'https://docs.python.org/en'
+
+        shouldNotDoAnything(describedFunction, urlAsString)
+      })
+      describe('and the first URL pathname fragment is "fr"', () => {
+        const urlAsString = 'https://docs.python.org/fr'
+        const expectedUrlAsString = 'https://docs.python.org/en'
+        const upperCaseExpectedUrlAsString = 'https://docs.python.org/en'
+        const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+        shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      })
+      describe('and the first URL pathname fragment is "pt-br"', () => {
+        const urlAsString = 'https://docs.python.org/pt-br'
+        const expectedUrlAsString = 'https://docs.python.org/en'
+        const upperCaseExpectedUrlAsString = 'https://docs.python.org/en'
+        const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+        shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      })
+    })
+
+    describe('when there are two URL pathname fragments', () => {
+      const urlAsString = 'https://docs.python.org/one/two'
+      const expectedUrlAsString = 'https://docs.python.org/en/one/two'
+      const upperCaseExpectedUrlAsString = 'https://docs.python.org/en/ONE/TWO'
+      const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+      shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      describe('and the first URL pathname fragment is "en"', () => {
+        const urlAsString = 'https://docs.python.org/en/two'
+
+        shouldNotDoAnything(describedFunction, urlAsString)
+      })
+      describe('and the second URL pathname fragment is "fr"', () => {
+        const urlAsString = 'https://docs.python.org/fr/two'
+        const expectedUrlAsString = 'https://docs.python.org/en/two'
+        const upperCaseExpectedUrlAsString = 'https://docs.python.org/en/TWO'
+        const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+        shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      })
+      describe('and the second URL pathname fragment is "pt-br"', () => {
+        const urlAsString = 'https://docs.python.org/pt-br/two'
+        const expectedUrlAsString = 'https://docs.python.org/en/two'
+        const upperCaseExpectedUrlAsString = 'https://docs.python.org/en/TWO'
+        const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+        shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      })
+    })
+  })
 })
 

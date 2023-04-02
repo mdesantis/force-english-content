@@ -141,11 +141,35 @@ function rewritePhpManualUrl(url: URL) {
   return url
 }
 
+function rewritePythonDocsUrl(url: URL) {
+  if (url.hostname !== 'docs.python.org') return null
+
+  const pathnameFragments = url.pathname.split('/')
+  const [, localeFragment] = pathnameFragments
+
+  if (!localeFragment) return null
+
+  const englishLocale = 'en'
+
+  if (caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
+
+  if (localeFragment.match(/^[a-z]{2}(?:-[a-z]{2})?$/ui)) {
+    replaceAt(pathnameFragments, 1, englishLocale)
+  } else {
+    insertAt(pathnameFragments, 1, englishLocale)
+  }
+
+  url.pathname = pathnameFragments.join('/')
+
+  return url
+}
+
 const REWRITES = {
   '*://*.reactjs.org/*': rewriteReactJsUrl,
   '*://developer.mozilla.org/*': rewriteMozillaMdnUrl,
   '*://developers.facebook.com/*': rewriteFacebookDevelopersUrl,
   '*://docs.microsoft.com/*': rewriteMicrosoftDocsUrl,
+  '*://docs.python.org/*': rewritePythonDocsUrl,
   '*://learn.microsoft.com/*': rewriteMicrosoftLearnUrl,
   '*://www.php.net/*': rewritePhpManualUrl
 }

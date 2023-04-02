@@ -43,6 +43,7 @@ necessity anyway. So have fun instead of being confused! :gb:
 - [reactjs.org](https://reactjs.org)
 - [developers.facebook.com](https://developers.facebook.com)
 - [www.php.net/manual](https://www.php.net/manual)
+- [docs.python.org](https://docs.python.org)
 - [***Whatever!***](https://github.com/mdesantis/force-english-content/issues/new?labels=enhancement&title=Add%20support%20for%20www.example.com&body=Hello!%20Is%20it%20possible%20to%20rewrite%20%60http%3A%2F%2Fwww.example.com%60%20to%20%60http%3A%2F%2Fwww.example.com/en-US%60%3F%20Thanks!)
 
 ## Installation
