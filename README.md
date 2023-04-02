@@ -79,7 +79,7 @@ Make your changes, then run:
 npx nyc npm test && npm run build && npm run lint
 ```
 
-#### Release
+#### Releasing
 
 Use `npm version`, e.g.:
 
