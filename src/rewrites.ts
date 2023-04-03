@@ -14,12 +14,16 @@ function caseInsensitiveStringEqual(actual: string, expected: string) {
   return actual.match(expectedPattern)
 }
 
+function insertAt(array: unknown[], index: number, element: unknown) {
+  return array.splice(index, 0, element)
+}
+
 function replaceAt(array: unknown[], index: number, element: unknown) {
   return array.splice(index, 1, element)
 }
 
-function insertAt(array: unknown[], index: number, element: unknown) {
-  return array.splice(index, 0, element)
+function removeAt(array: unknown[], index: number) {
+  return array.splice(index, 1)
 }
 
 function rewriteMicrosoftDocsUrl(url: URL) {
@@ -147,17 +151,9 @@ function rewritePythonDocsUrl(url: URL) {
   const pathnameFragments = url.pathname.split('/')
   const [, localeFragment] = pathnameFragments
 
-  if (!localeFragment) return null
+  if (!localeFragment?.match(/^[a-z]{2}(?:-[a-z]{2})?$/ui)) return null
 
-  const englishLocale = 'en'
-
-  if (caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
-
-  if (localeFragment.match(/^[a-z]{2}(?:-[a-z]{2})?$/ui)) {
-    replaceAt(pathnameFragments, 1, englishLocale)
-  } else {
-    insertAt(pathnameFragments, 1, englishLocale)
-  }
+  removeAt(pathnameFragments, 1)
 
   url.pathname = pathnameFragments.join('/')
 
