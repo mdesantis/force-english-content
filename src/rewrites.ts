@@ -126,15 +126,17 @@ function rewritePhpManualUrl(url: URL) {
   if (url.hostname !== 'www.php.net') return null
 
   const pathnameFragments = url.pathname.split('/')
-  const [, manualFragment, localeFragment] = pathnameFragments
+  const [, firstFragment, secondFragment] = pathnameFragments
 
-  if (!manualFragment || !caseInsensitiveStringEqual(manualFragment, 'manual')) return null
+  if (!firstFragment || !caseInsensitiveStringEqual(firstFragment, 'manual')) return null
+
+  if (secondFragment && caseInsensitiveStringEqual(secondFragment, 'change.php')) return null
 
   const englishLocale = 'en'
 
-  if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
+  if (secondFragment && caseInsensitiveStringEqual(secondFragment, englishLocale)) return null
 
-  if (localeFragment?.match(/^[a-z]{2}(?:_[a-z]{2})?$/ui)) {
+  if (secondFragment?.match(/^[a-z]{2}(?:_[a-z]{2})?$/ui)) {
     replaceAt(pathnameFragments, 2, englishLocale)
   } else {
     insertAt(pathnameFragments, 2, englishLocale)

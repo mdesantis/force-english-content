@@ -137,7 +137,7 @@ rules:
       ignoreUrls: true
   max-statements:
     - error
-    - max: 12
+    - max: 15
   multiline-comment-style:
     - off
   multiline-ternary:

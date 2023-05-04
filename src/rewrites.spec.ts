@@ -375,6 +375,11 @@ describe('ForceEnglishContent', () => {
 
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
       })
+      describe('and they are "manual" and "change.php"', () => {
+        const urlAsString = 'https://www.php.net/manual/change.php'
+
+        shouldNotDoAnything(describedFunction, urlAsString)
+      })
       describe('and the second URL pathname fragment is "en"', () => {
         const urlAsString = 'https://www.php.net/manual/en'
 
