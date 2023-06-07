@@ -15,16 +15,17 @@
 > Forces localised web pages with poor or outdated translations to redirect to
 > the original English content.
 
-Developer documentation content from [many popular websites serving technical
-documentation](#supported-sites) is offered in many different languages. While
-this is normally a welcome idea, it is badly implemented by nagging the user
-with all sorts of changing messages and popups in translated content. Even
-worse, much of the content is simply machine-translated these days, making it
-hard to understand and sometimes completely incomprehensible. And even if you're
-lucky to find old content that was manually translated, it is often out of date
-and nobody tells you. This has led to misunderstandings in internet discussions
-more often than not, when I was served a completely different meaning than
-others that were accessing updated and corrected English content.
+Developer documentation content from
+[many popular websites serving technical documentation](#supported-sites) is
+offered in many different languages. While this is normally a welcome idea, it
+is badly implemented by nagging the user with all sorts of changing messages and
+popups in translated content. Even worse, much of the content is simply
+machine-translated these days, making it hard to understand and sometimes
+completely incomprehensible. And even if you're lucky to find old content that
+was manually translated, it is often out of date and nobody tells you. This has
+led to misunderstandings in internet discussions more often than not, when I was
+served a completely different meaning than others that were accessing updated
+and corrected English content.
 
 This extension fixes all these problems. Whenever it sees you accessing a
 localised site, it swiftly redirects you to the original content so that you get
@@ -40,24 +41,26 @@ necessity anyway. So have fun instead of being confused! :gb:
 - [docs.microsoft.com](https://docs.microsoft.com)
 - [learn.microsoft.com](https://learn.microsoft.com)
 - [developer.mozilla.org/docs](https://developer.mozilla.org/docs)
-- [reactjs.org](https://reactjs.org)
+- [legacy.reactjs.org](https://legacy.reactjs.org)
 - [developers.facebook.com](https://developers.facebook.com)
 - [www.php.net/manual](https://www.php.net/manual)
 - [docs.python.org](https://docs.python.org)
-- [***Whatever!***](https://github.com/mdesantis/force-english-content/issues/new?labels=enhancement&title=Add%20support%20for%20www.example.com&body=Hello!%20Is%20it%20possible%20to%20rewrite%20%60http%3A%2F%2Fwww.example.com%60%20to%20%60http%3A%2F%2Fwww.example.com/en-US%60%3F%20Thanks!)
+- [_**Whatever!**_](https://github.com/mdesantis/force-english-content/issues/new?labels=enhancement&title=Add%20support%20for%20www.example.com&body=Hello!%20Is%20it%20possible%20to%20rewrite%20%60http%3A%2F%2Fwww.example.com%60%20to%20%60http%3A%2F%2Fwww.example.com/en-US%60%3F%20Thanks!)
 
 ## Installation
 
-- Chrome Web Store: https://chrome.google.com/webstore/detail/force-english-content/kglfhodlninopcgjohfeephcddibbome/
-- Mozilla Add-on: https://addons.mozilla.org/firefox/addon/force-english-content/
+- Chrome Web Store:
+  https://chrome.google.com/webstore/detail/force-english-content/kglfhodlninopcgjohfeephcddibbome/
+- Mozilla Add-on:
+  https://addons.mozilla.org/firefox/addon/force-english-content/
 
 ## Development
 
 ### Dependencies
 
-This project uses Bash for [scripts](./scripts), jq for the [bump manifest
-version script](./scripts/update-manifests-extension-version.sh), and Inkscape for the [build
-icons script](./scripts/build-icons.sh).
+This project uses Bash for [scripts](./scripts), jq for the
+[bump manifest version script](./scripts/update-manifests-extension-version.sh),
+and Inkscape for the [build icons script](./scripts/build-icons.sh).
 
 ### Setup on Ubuntu
 
@@ -92,14 +95,15 @@ npm version patch
 Contributions are welcome and straightforward to submit, as this is a one-man
 project. Just open an
 [issue](/https://github.com/mdesantis/force-english-content/issues) or create a
-[pull request](https://github.com/mdesantis/force-english-content/pulls) directly.
+[pull request](https://github.com/mdesantis/force-english-content/pulls)
+directly.
 
 ## Acknowledgements
 
-This extension is a revamp of [English
-Content](https://addons.mozilla.org/it/firefox/addon/english-content) by [Yves
-Goergen](https://addons.mozilla.org/it/firefox/user/2296386/), to which I stole
-the main idea and the description above, as it is much better than any
+This extension is a revamp of
+[English Content](https://addons.mozilla.org/it/firefox/addon/english-content)
+by [Yves Goergen](https://addons.mozilla.org/it/firefox/user/2296386/), to which
+I stole the main idea and the description above, as it is much better than any
 decription I could come up with. Thanks Yves!
 
 ## Licensing
