@@ -267,37 +267,44 @@ describe('ForceEnglishContent', () => {
     })
   })
 
-  describe('rewriteReactJsUrl()', () => {
-    const describedFunction = REWRITES['*://*.reactjs.org/*']
+  describe('rewriteLegacyReactJsUrl()', () => {
+    const describedFunction = REWRITES['*://*.legacy.reactjs.org/*']
 
-    describe('when the domain does not match', () => {
-      const urlAsString = 'https://it.reactjs.com'
-
-      shouldNotDoAnything(describedFunction, urlAsString)
-    })
-    describe('when there are no subdomain fragments', () => {
-      const urlAsString = 'https://reactjs.org'
+    describe('when there are three subdomain fragments', () => {
+      const urlAsString = 'https://one.two.legacy.reactjs.org'
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
-    describe('when there are two subdomain fragments', () => {
+    describe('when there are two subdomain fragments and the second one is not "legacy"', () => {
       const urlAsString = 'https://one.two.reactjs.org'
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
-    describe('when the subdomain is too long', () => {
-      const urlAsString = 'https://www.reactjs.org'
+    describe('when the first subdomain is "www"', () => {
+      const urlAsString = 'https://www.legacy.reactjs.org'
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
-    describe('when the subdomain is "en"', () => {
-      const urlAsString = 'https://en.reactjs.org'
+    describe('when the first subdomain is "en"', () => {
+      const urlAsString = 'https://en.legacy.reactjs.org'
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
-    describe('when the subdomain is "it"', () => {
-      const urlAsString = 'https://it.reactjs.org/'
-      const expectedUrlAsString = 'https://en.reactjs.org/'
+    describe('when the first subdomain is "it"', () => {
+      const urlAsString = 'https://it.legacy.reactjs.org/'
+      const expectedUrlAsString = 'https://en.legacy.reactjs.org/'
+
+      shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString)
+    })
+    describe('when the first subdomain is "pt-br"', () => {
+      const urlAsString = 'https://pt-br.legacy.reactjs.org/'
+      const expectedUrlAsString = 'https://en.legacy.reactjs.org/'
+
+      shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString)
+    })
+    describe('when the first subdomain is "zh-hans"', () => {
+      const urlAsString = 'https://zh-hans.legacy.reactjs.org/'
+      const expectedUrlAsString = 'https://en.legacy.reactjs.org/'
 
       shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString)
     })

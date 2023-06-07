@@ -89,12 +89,10 @@ function rewriteMozillaMdnUrl(url: URL) {
   return url
 }
 
-function rewriteReactJsUrl(url: URL) {
-  if (!url.hostname.match(/^[a-z]{2}\.reactjs\.org$/u)) return null
+function rewriteLegacyReactJsUrl(url: URL) {
+  if (!url.hostname.match(/^[a-z]{2}(?:-[a-z]{2,4})?\.legacy\.reactjs\.org$/u)) return null
 
   const hostnameFragments = url.hostname.split('.')
-
-  if (hostnameFragments.length !== 3) return null
 
   const [localeFragment] = hostnameFragments
 
@@ -164,7 +162,7 @@ function rewritePythonDocsUrl(url: URL) {
 }
 
 const REWRITES = {
-  '*://*.reactjs.org/*': rewriteReactJsUrl,
+  '*://*.legacy.reactjs.org/*': rewriteLegacyReactJsUrl,
   '*://developer.mozilla.org/*': rewriteMozillaMdnUrl,
   '*://developers.facebook.com/*': rewriteFacebookDevelopersUrl,
   '*://docs.microsoft.com/*': rewriteMicrosoftDocsUrl,
