@@ -131,6 +131,7 @@ function rewritePhpManualUrl(url: URL) {
   if (!firstFragment || !caseInsensitiveStringEqual(firstFragment, 'manual')) return null
 
   if (secondFragment && caseInsensitiveStringEqual(secondFragment, 'change.php')) return null
+  if (secondFragment && caseInsensitiveStringEqual(secondFragment, 'help-translate.php')) return null
 
   const englishLocale = 'en'
 

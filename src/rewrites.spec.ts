@@ -380,6 +380,11 @@ describe('ForceEnglishContent', () => {
 
         shouldNotDoAnything(describedFunction, urlAsString)
       })
+      describe('and they are "manual" and "help-translate.php"', () => {
+        const urlAsString = 'https://www.php.net/manual/help-translate.php'
+
+        shouldNotDoAnything(describedFunction, urlAsString)
+      })
       describe('and the second URL pathname fragment is "en"', () => {
         const urlAsString = 'https://www.php.net/manual/en'
 
