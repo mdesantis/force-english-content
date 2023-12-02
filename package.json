@@ -18,7 +18,7 @@
     "webextension-polyfill": "^0.10.0"
   },
   "devDependencies": {
-    "@tsconfig/recommended": "^1.0.2",
+    "@tsconfig/recommended": "^1.0.3",
     "@types/mocha": "^10.0.3",
     "@types/webextension-polyfill": "^0.10.4",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
