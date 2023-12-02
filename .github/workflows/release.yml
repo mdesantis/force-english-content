@@ -19,10 +19,11 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y bash inkscape jq
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Use Node.js 18.x
-        uses: actions/setup-node@v3
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
+          check-latest: true
           cache: 'npm'
       - run: npm ci
       - run: npm run build
