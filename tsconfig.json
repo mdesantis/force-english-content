@@ -1,5 +1,6 @@
 {
-  "extends": "@tsconfig/recommended/tsconfig.json",
+  // See https://github.com/tsconfig/bases/issues/74 for discussion about "./node_modules/" prefix.
+  "extends": "./node_modules/@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
     "lib": [
       "es2020",
