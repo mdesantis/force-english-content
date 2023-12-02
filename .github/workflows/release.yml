@@ -18,7 +18,7 @@ jobs:
       - name: Install build dependencies
         run: sudo apt-get update && sudo apt-get install -y bash inkscape jq
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use Node.js LTS
         uses: actions/setup-node@v4
         with:
