@@ -24,13 +24,13 @@ jobs:
     - run: npm run build
     - run: npm run lint
     - run: npx nyc --reporter=lcov npm test
-    - run: npx codecov
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
-      with:
-        # codecov action breaks some builds for no reason, so we need to ignore its failures.
-        # See: https://github.com/mdesantis/force-english-content/actions/runs/9333212817/job/25689985967
-        fail_ci_if_error: false
-        verbose: true
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    # codecov action breaks some builds for no reason, so we need to ignore its failures.
+    # See: https://github.com/mdesantis/force-english-content/actions/runs/9333212817/job/25689985967
+    # - run: npx codecov
+    # - name: Upload coverage to Codecov
+    #   uses: codecov/codecov-action@v4
+    #   with:
+    #     fail_ci_if_error: true
+    #     verbose: true
+    #   env:
+    #     CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
