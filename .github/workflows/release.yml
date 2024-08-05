@@ -34,7 +34,7 @@ jobs:
               npx chrome-webstore-upload-cli upload --auto-publish --source web-ext-artifacts/chrome/*.zip
               ;;
             firefox)
-              npx web-ext-submit --source-dir dist-firefox --artifacts-dir web-ext-artifacts/firefox
+              npx web-ext sign --channel listed --source-dir dist-firefox --artifacts-dir web-ext-artifacts/firefox
               ;;
           esac
         env:
