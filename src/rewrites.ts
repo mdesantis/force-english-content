@@ -1,4 +1,3 @@
-
 // Copied from https://github.com/sindresorhus/escape-string-regexp/blob/v5.0.0/index.js.
 // Can't use `import escapeStringRegexp from 'escape-string-regexp'` because otherwise `yarn exec mocha` fails because
 // it can't resolve `.ts` files. Don't ask me why.
@@ -90,7 +89,7 @@ function rewriteMozillaMdnUrl(url: URL) {
 }
 
 function rewriteLegacyReactJsUrl(url: URL) {
-  if (!url.hostname.match(/^[a-z]{2}(?:-[a-z]{2,4})?\.legacy\.reactjs\.org$/u)) return null
+  if (!(/^[a-z]{2}(?:-[a-z]{2,4})?\.legacy\.reactjs\.org$/u.exec(url.hostname))) return null
 
   const hostnameFragments = url.hostname.split('.')
 

@@ -58,11 +58,11 @@ function shouldNotDoAnything(
     upperCaseUrlAsString = new URL(urlAsString.toUpperCase()).toString()
   } = {}
 ) {
-  it('should return null', () => shouldReturnNull(describedFunction, urlAsString))
-  it('should not change URL', () => shouldNotChangeUrl(describedFunction, urlAsString))
+  it('should return null', () => { shouldReturnNull(describedFunction, urlAsString) })
+  it('should not change URL', () => { shouldNotChangeUrl(describedFunction, urlAsString) })
   describe('and URL is upper-case', () => {
-    it('should return null', () => shouldReturnNull(describedFunction, upperCaseUrlAsString))
-    it('should not change URL', () => shouldNotChangeUrl(describedFunction, upperCaseUrlAsString))
+    it('should return null', () => { shouldReturnNull(describedFunction, upperCaseUrlAsString) })
+    it('should not change URL', () => { shouldNotChangeUrl(describedFunction, upperCaseUrlAsString) })
   })
 }
 
@@ -75,16 +75,16 @@ function shouldChangeUrlAndReturnIt(
     upperCaseUrlAsString = new URL(urlAsString.toUpperCase()).toString()
   } = {}
 ) {
-  it('should change URL', () => shouldChangeUrl(describedFunction, urlAsString, expectedUrlAsString))
-  it('should return changed URL', () => shouldReturnChangedUrl(describedFunction, urlAsString, expectedUrlAsString))
+  it('should change URL', () => { shouldChangeUrl(describedFunction, urlAsString, expectedUrlAsString) })
+  it('should return changed URL', () => { shouldReturnChangedUrl(describedFunction, urlAsString, expectedUrlAsString) })
   describe('and URL is upper-case', () => {
     it(
       'should change URL',
-      () => shouldChangeUrl(describedFunction, upperCaseUrlAsString, upperCaseExpectedUrlAsString)
+      () => { shouldChangeUrl(describedFunction, upperCaseUrlAsString, upperCaseExpectedUrlAsString) }
     )
     it(
       'should return changed URL',
-      () => shouldReturnChangedUrl(describedFunction, upperCaseUrlAsString, upperCaseExpectedUrlAsString)
+      () => { shouldReturnChangedUrl(describedFunction, upperCaseUrlAsString, upperCaseExpectedUrlAsString) }
     )
   })
 }
