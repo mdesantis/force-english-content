@@ -18,16 +18,20 @@
     "webextension-polyfill": "^0.12.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.9.0",
     "@tsconfig/recommended": "^1.0.7",
+    "@types/eslint__js": "^8.42.3",
     "@types/mocha": "^10.0.7",
     "@types/webextension-polyfill": "^0.10.7",
     "chrome-webstore-upload-cli": "^3.3.1",
     "codecov": "^3.8.3",
+    "eslint": "^9.9.0",
     "mocha": "^10.7.0",
     "nyc": "^17.0.0",
     "parcel": "^2.12.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
+    "typescript-eslint": "^8.2.0",
     "web-ext": "^8.2.0"
   },
   "scripts": {
