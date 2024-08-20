@@ -62,6 +62,7 @@ function shouldNotDoAnything(
   it('should not change URL', () => { shouldNotChangeUrl(describedFunction, urlAsString) })
   describe('and URL is upper-case', () => {
     it('should return null', () => { shouldReturnNull(describedFunction, upperCaseUrlAsString) })
+
     it('should not change URL', () => { shouldNotChangeUrl(describedFunction, upperCaseUrlAsString) })
   })
 }
@@ -82,6 +83,7 @@ function shouldChangeUrlAndReturnIt(
       'should change URL',
       () => { shouldChangeUrl(describedFunction, upperCaseUrlAsString, upperCaseExpectedUrlAsString) }
     )
+
     it(
       'should return changed URL',
       () => { shouldReturnChangedUrl(describedFunction, upperCaseUrlAsString, upperCaseExpectedUrlAsString) }
@@ -98,6 +100,7 @@ describe('ForceEnglishContent', () => {
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when the are no URL pathname fragments', () => {
       const urlAsString = 'https://docs.microsoft.com'
       const expectedUrlAsString = 'https://docs.microsoft.com/en-us/'
@@ -106,16 +109,19 @@ describe('ForceEnglishContent', () => {
 
       shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
     })
+
     describe('when the first URL pathname fragment is "en-us"', () => {
       const urlAsString = 'https://docs.microsoft.com/en-us'
 
       shouldNotDoAnything(describedFunction, urlAsString)
+
       describe('and there are more pathname fragments', () => {
         const urlAsString = 'https://docs.microsoft.com/en-us/one/two/three'
 
         shouldNotDoAnything(describedFunction, urlAsString)
       })
     })
+
     describe('when the first URL pathname fragment is "it-it"', () => {
       const urlAsString = 'https://docs.microsoft.com/it-it'
       const expectedUrlAsString = 'https://docs.microsoft.com/en-us'
@@ -123,6 +129,7 @@ describe('ForceEnglishContent', () => {
       const upperCaseOptions = { upperCaseExpectedUrlAsString }
 
       shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+
       describe('and there are more pathname fragments', () => {
         const urlAsString = 'https://docs.microsoft.com/it-it/one/two/three'
         const expectedUrlAsString = 'https://docs.microsoft.com/en-us/one/two/three'
@@ -142,6 +149,7 @@ describe('ForceEnglishContent', () => {
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when the are no URL pathname fragments', () => {
       const urlAsString = 'https://learn.microsoft.com'
       const expectedUrlAsString = 'https://learn.microsoft.com/en-us/'
@@ -150,16 +158,19 @@ describe('ForceEnglishContent', () => {
 
       shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
     })
+
     describe('when the first URL pathname fragment is "en-us"', () => {
       const urlAsString = 'https://learn.microsoft.com/en-us'
 
       shouldNotDoAnything(describedFunction, urlAsString)
+
       describe('and there are more pathname fragments', () => {
         const urlAsString = 'https://learn.microsoft.com/en-us/one/two/three'
 
         shouldNotDoAnything(describedFunction, urlAsString)
       })
     })
+
     describe('when the first URL pathname fragment is "it-it"', () => {
       const urlAsString = 'https://learn.microsoft.com/it-it'
       const expectedUrlAsString = 'https://learn.microsoft.com/en-us'
@@ -167,6 +178,7 @@ describe('ForceEnglishContent', () => {
       const upperCaseOptions = { upperCaseExpectedUrlAsString }
 
       shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+
       describe('and there are more pathname fragments', () => {
         const urlAsString = 'https://learn.microsoft.com/it-it/one/two/three'
         const expectedUrlAsString = 'https://learn.microsoft.com/en-us/one/two/three'
@@ -186,20 +198,24 @@ describe('ForceEnglishContent', () => {
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when the are no URL pathname fragments', () => {
       const urlAsString = 'https://developer.mozilla.org'
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when there is one URL pathname fragment', () => {
       const urlAsString = 'https://developer.mozilla.org/one'
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when there are two URL pathname fragments', () => {
       const urlAsString = 'https://developer.mozilla.org/one/two'
 
       shouldNotDoAnything(describedFunction, urlAsString)
+
       describe('and the second URL pathname fragment is "docs"', () => {
         const urlAsString = 'https://developer.mozilla.org/one/docs'
         const expectedUrlAsString = 'https://developer.mozilla.org/en-US/one/docs'
@@ -208,11 +224,13 @@ describe('ForceEnglishContent', () => {
 
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
       })
+
       describe('and the first URL pathname fragment is "en-US"', () => {
         const urlAsString = 'https://developer.mozilla.org/en-US/docs'
 
         shouldNotDoAnything(describedFunction, urlAsString)
       })
+
       describe('and the first URL pathname fragment is "it-IT"', () => {
         const urlAsString = 'https://developer.mozilla.org/it-IT/docs'
         const expectedUrlAsString = 'https://developer.mozilla.org/en-US/docs'
@@ -221,6 +239,7 @@ describe('ForceEnglishContent', () => {
 
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
       })
+
       describe('and the first URL pathname fragment is "es"', () => {
         const urlAsString = 'https://developer.mozilla.org/es/docs'
         const expectedUrlAsString = 'https://developer.mozilla.org/en-US/docs'
@@ -235,6 +254,7 @@ describe('ForceEnglishContent', () => {
       const urlAsString = 'https://developer.mozilla.org/one/two/three'
 
       shouldNotDoAnything(describedFunction, urlAsString)
+
       describe('and the second URL pathname fragment is "docs"', () => {
         const urlAsString = 'https://developer.mozilla.org/one/docs/three'
         const expectedUrlAsString = 'https://developer.mozilla.org/en-US/one/docs/three'
@@ -242,11 +262,13 @@ describe('ForceEnglishContent', () => {
         const upperCaseOptions = { upperCaseExpectedUrlAsString }
 
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+
         describe('and the first URL pathname fragment is "en-US"', () => {
           const urlAsString = 'https://developer.mozilla.org/en-US/docs/three'
 
           shouldNotDoAnything(describedFunction, urlAsString)
         })
+
         describe('and the first URL pathname fragment is "it-IT"', () => {
           const urlAsString = 'https://developer.mozilla.org/it-IT/docs/three'
           const expectedUrlAsString = 'https://developer.mozilla.org/en-US/docs/three'
@@ -255,6 +277,7 @@ describe('ForceEnglishContent', () => {
 
           shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
         })
+
         describe('and the first URL pathname fragment is "es"', () => {
           const urlAsString = 'https://developer.mozilla.org/es/docs/three'
           const expectedUrlAsString = 'https://developer.mozilla.org/en-US/docs/three'
@@ -275,33 +298,39 @@ describe('ForceEnglishContent', () => {
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when there are two subdomain fragments and the second one is not "legacy"', () => {
       const urlAsString = 'https://one.two.reactjs.org'
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when the first subdomain is "www"', () => {
       const urlAsString = 'https://www.legacy.reactjs.org'
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when the first subdomain is "en"', () => {
       const urlAsString = 'https://en.legacy.reactjs.org'
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when the first subdomain is "it"', () => {
       const urlAsString = 'https://it.legacy.reactjs.org/'
       const expectedUrlAsString = 'https://en.legacy.reactjs.org/'
 
       shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString)
     })
+
     describe('when the first subdomain is "pt-br"', () => {
       const urlAsString = 'https://pt-br.legacy.reactjs.org/'
       const expectedUrlAsString = 'https://en.legacy.reactjs.org/'
 
       shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString)
     })
+
     describe('when the first subdomain is "zh-hans"', () => {
       const urlAsString = 'https://zh-hans.legacy.reactjs.org/'
       const expectedUrlAsString = 'https://en.legacy.reactjs.org/'
@@ -318,6 +347,7 @@ describe('ForceEnglishContent', () => {
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when there is no "locale" search param', () => {
       const urlAsString = 'https://developers.facebook.com/'
       const expectedUrlAsString = 'https://developers.facebook.com/?locale=en_US'
@@ -327,12 +357,14 @@ describe('ForceEnglishContent', () => {
 
       shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
     })
+
     describe('when there is a "locale=en_US" search param', () => {
       const urlAsString = 'https://developers.facebook.com/?locale=en_US'
       const upperCaseUrlAsString = urlAsString
 
       shouldNotDoAnything(describedFunction, urlAsString, { upperCaseUrlAsString })
     })
+
     describe('when there is a "locale=it_IT" search param', () => {
       const urlAsString = 'https://developers.facebook.com/?locale=it_IT'
       const expectedUrlAsString = 'https://developers.facebook.com/?locale=en_US'
@@ -352,15 +384,18 @@ describe('ForceEnglishContent', () => {
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when the are no URL pathname fragments', () => {
       const urlAsString = 'https://www.php.net'
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when there is one URL pathname fragment', () => {
       const urlAsString = 'https://www.php.net/one'
 
       shouldNotDoAnything(describedFunction, urlAsString)
+
       describe('and the first URL pathname fragment is "manual"', () => {
         const urlAsString = 'https://www.php.net/manual'
         const expectedUrlAsString = 'https://www.php.net/manual/en'
@@ -370,10 +405,12 @@ describe('ForceEnglishContent', () => {
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
       })
     })
+
     describe('when there are two URL pathname fragments', () => {
       const urlAsString = 'https://www.php.net/one/two'
 
       shouldNotDoAnything(describedFunction, urlAsString)
+
       describe('and the first URL pathname fragment is "manual"', () => {
         const urlAsString = 'https://www.php.net/manual/two'
         const expectedUrlAsString = 'https://www.php.net/manual/en/two'
@@ -382,21 +419,25 @@ describe('ForceEnglishContent', () => {
 
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
       })
+
       describe('and they are "manual" and "change.php"', () => {
         const urlAsString = 'https://www.php.net/manual/change.php'
 
         shouldNotDoAnything(describedFunction, urlAsString)
       })
+
       describe('and they are "manual" and "help-translate.php"', () => {
         const urlAsString = 'https://www.php.net/manual/help-translate.php'
 
         shouldNotDoAnything(describedFunction, urlAsString)
       })
+
       describe('and the second URL pathname fragment is "en"', () => {
         const urlAsString = 'https://www.php.net/manual/en'
 
         shouldNotDoAnything(describedFunction, urlAsString)
       })
+
       describe('and the second URL pathname fragment is "pt_BR"', () => {
         const urlAsString = 'https://www.php.net/manual/pt_BR'
         const expectedUrlAsString = 'https://www.php.net/manual/en'
@@ -405,6 +446,7 @@ describe('ForceEnglishContent', () => {
 
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
       })
+
       describe('and the first URL pathname fragment is "fr"', () => {
         const urlAsString = 'https://www.php.net/manual/fr'
         const expectedUrlAsString = 'https://www.php.net/manual/en'
@@ -419,6 +461,7 @@ describe('ForceEnglishContent', () => {
       const urlAsString = 'https://www.php.net/one/two/three'
 
       shouldNotDoAnything(describedFunction, urlAsString)
+
       describe('and the first URL pathname fragment is "manual"', () => {
         const urlAsString = 'https://www.php.net/manual/two/three'
         const expectedUrlAsString = 'https://www.php.net/manual/en/two/three'
@@ -426,11 +469,13 @@ describe('ForceEnglishContent', () => {
         const upperCaseOptions = { upperCaseExpectedUrlAsString }
 
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+
         describe('and the second URL pathname fragment is "en"', () => {
           const urlAsString = 'https://www.php.net/manual/en/three'
 
           shouldNotDoAnything(describedFunction, urlAsString)
         })
+
         describe('and the second URL pathname fragment is "pt_BR"', () => {
           const urlAsString = 'https://www.php.net/manual/pt_BR/three'
           const expectedUrlAsString = 'https://www.php.net/manual/en/three'
@@ -439,6 +484,7 @@ describe('ForceEnglishContent', () => {
 
           shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
         })
+
         describe('and the first URL pathname fragment is "fr"', () => {
           const urlAsString = 'https://www.php.net/manual/fr/three'
           const expectedUrlAsString = 'https://www.php.net/manual/en/three'
@@ -459,15 +505,18 @@ describe('ForceEnglishContent', () => {
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when the are no URL pathname fragments', () => {
       const urlAsString = 'https://docs.python.org'
 
       shouldNotDoAnything(describedFunction, urlAsString)
     })
+
     describe('when there is one URL pathname fragment', () => {
       const urlAsString = 'https://docs.python.org/one'
 
       shouldNotDoAnything(describedFunction, urlAsString)
+
       describe('and the first URL pathname fragment is "fr"', () => {
         const urlAsString = 'https://docs.python.org/fr'
         const expectedUrlAsString = 'https://docs.python.org/'
@@ -476,6 +525,7 @@ describe('ForceEnglishContent', () => {
 
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
       })
+
       describe('and the first URL pathname fragment is "pt-br"', () => {
         const urlAsString = 'https://docs.python.org/pt-br'
         const expectedUrlAsString = 'https://docs.python.org/'
@@ -490,6 +540,7 @@ describe('ForceEnglishContent', () => {
       const urlAsString = 'https://docs.python.org/one/two'
 
       shouldNotDoAnything(describedFunction, urlAsString)
+
       describe('and the first URL pathname fragment is "fr"', () => {
         const urlAsString = 'https://docs.python.org/fr/two'
         const expectedUrlAsString = 'https://docs.python.org/two'
@@ -498,6 +549,7 @@ describe('ForceEnglishContent', () => {
 
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
       })
+
       describe('and the first URL pathname fragment is "pt-br"', () => {
         const urlAsString = 'https://docs.python.org/pt-br/two'
         const expectedUrlAsString = 'https://docs.python.org/two'

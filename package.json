@@ -27,6 +27,7 @@
     "chrome-webstore-upload-cli": "^3.3.1",
     "codecov": "^3.8.3",
     "eslint": "^9.9.0",
+    "eslint-plugin-mocha": "^10.5.0",
     "mocha": "^10.7.0",
     "nyc": "^17.0.0",
     "parcel": "^2.12.0",

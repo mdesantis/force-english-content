@@ -1,6 +1,7 @@
 // @ts-check
 
 import eslint from '@eslint/js'
+import mochaPlugin from 'eslint-plugin-mocha'
 import stylistic from '@stylistic/eslint-plugin'
 import tseslint from 'typescript-eslint'
 
@@ -8,6 +9,7 @@ export default tseslint.config(
   { ignores: ['dist', 'dist-*', 'eslint.config.mjs'] },
   eslint.configs.all,
   stylistic.configs['all-flat'],
+  mochaPlugin.configs.flat.recommended,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   {
@@ -89,6 +91,14 @@ export default tseslint.config(
       '@typescript-eslint/no-shadow': 'off',
       'max-lines-per-function': 'off',
       'max-lines': 'off'
+    }
+  },
+  {
+    files: ['src/rewrites.spec.ts'],
+    rules: {
+      'mocha/no-mocha-arrows': 'off',
+      'mocha/no-identical-title': 'off',
+      'mocha/no-setup-in-describe': 'off'
     }
   }
 )
