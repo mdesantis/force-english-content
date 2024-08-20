@@ -2,10 +2,8 @@
   // See https://github.com/tsconfig/bases/issues/74 for discussion about "./node_modules/" prefix.
   "extends": "./node_modules/@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
-    "lib": [
-      "es2020",
-      "DOM"
-    ],
+    "target": "ES6",
+    "lib": ["DOM"],
     "isolatedModules": true,
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
@@ -15,5 +13,6 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true
-  }
+  },
+  "include": ["src/**/*"]
 }
