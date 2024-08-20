@@ -97,7 +97,6 @@ export default tseslint.config(
     files: ['src/rewrites.spec.ts'],
     rules: {
       'mocha/no-mocha-arrows': 'off',
-      'mocha/no-identical-title': 'off',
       'mocha/no-setup-in-describe': 'off'
     }
   }

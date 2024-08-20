@@ -78,7 +78,7 @@ function shouldChangeUrlAndReturnIt(
 ) {
   it('should change URL', () => { shouldChangeUrl(describedFunction, urlAsString, expectedUrlAsString) })
   it('should return changed URL', () => { shouldReturnChangedUrl(describedFunction, urlAsString, expectedUrlAsString) })
-  describe('and URL is upper-case', () => {
+  describe('and URL is upper-case', () => { // eslint-disable-line mocha/no-identical-title
     it(
       'should change URL',
       () => { shouldChangeUrl(describedFunction, upperCaseUrlAsString, upperCaseExpectedUrlAsString) }
