@@ -89,7 +89,7 @@ function rewriteMozillaMdnUrl(url: URL) {
 }
 
 function rewriteLegacyReactJsUrl(url: URL) {
-  if (!(/^[a-z]{2}(?:-[a-z]{2,4})?\.legacy\.reactjs\.org$/u.exec(url.hostname))) return null
+  if (!(/^[a-z]{2}(?:-[a-z]{2,4})?\.legacy\.reactjs\.org$/u).exec(url.hostname)) return null
 
   const hostnameFragments = url.hostname.split('.')
 

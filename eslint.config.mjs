@@ -1,10 +1,13 @@
 // @ts-check
 
 import eslint from '@eslint/js'
+import stylistic from '@stylistic/eslint-plugin'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
+  { ignores: ['dist', 'dist-*', 'eslint.config.mjs'] },
   eslint.configs.all,
+  stylistic.configs['all-flat'],
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   {
@@ -15,9 +18,29 @@ export default tseslint.config(
       }
     }
   },
-  { ignores: ['dist', 'dist-*', 'eslint.config.mjs'] },
   {
-    'rules': {
+    rules: {
+      '@stylistic/array-element-newline': ['error', 'consistent'],
+      '@stylistic/brace-style': ['error', '1tbs', {
+        'allowSingleLine': true
+      }],
+      '@stylistic/function-call-argument-newline': ['error', 'consistent'],
+      '@stylistic/indent': ['error', 2],
+      '@stylistic/multiline-comment-style': 'off',
+      '@stylistic/object-curly-spacing': ['error', 'always'],
+      '@stylistic/object-property-newline': ['error', {
+        'allowAllPropertiesOnSameLine': true
+      }],
+      '@stylistic/padded-blocks': ['error', 'never', {
+        'allowSingleLineBlocks': true
+      }],
+      '@stylistic/quotes': ['error', 'single'],
+      '@stylistic/semi': ['error', 'never'],
+      '@stylistic/space-before-function-paren': ['error', {
+        'anonymous': 'never',
+        'named': 'never',
+        'asyncArrow': 'always'
+      }],
       'capitalized-comments': ['warn', 'always', {
         'ignoreConsecutiveComments': true
       }],
@@ -40,8 +63,8 @@ export default tseslint.config(
     }
   },
   {
-    'files': ['**/*.ts'],
-    'rules': {
+    files: ['**/*.ts'],
+    rules: {
       '@typescript-eslint/max-params': 'error',
       '@typescript-eslint/no-magic-numbers': ['error', {
         'ignoreTypeIndexes': true
@@ -60,8 +83,8 @@ export default tseslint.config(
     }
   },
   {
-    'files': ['**/*.spec.ts'],
-    'rules': {
+    files: ['**/*.spec.ts'],
+    rules: {
       '@typescript-eslint/max-params': 'off',
       '@typescript-eslint/no-shadow': 'off',
       'max-lines-per-function': 'off',
