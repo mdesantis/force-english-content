@@ -14,15 +14,15 @@ function caseInsensitiveStringEqual(actual: string, expected: string) {
 }
 
 function insertAt(array: unknown[], index: number, element: unknown) {
-  return array.splice(index, 0, element)
+  return array.splice(index, 0, element) // eslint-disable-line @typescript-eslint/no-magic-numbers
 }
 
 function replaceAt(array: unknown[], index: number, element: unknown) {
-  return array.splice(index, 1, element)
+  return array.splice(index, 1, element) // eslint-disable-line @typescript-eslint/no-magic-numbers
 }
 
 function removeAt(array: unknown[], index: number) {
-  return array.splice(index, 1)
+  return array.splice(index, 1) // eslint-disable-line @typescript-eslint/no-magic-numbers
 }
 
 function rewriteMicrosoftDocsUrl(url: URL) {
@@ -35,9 +35,9 @@ function rewriteMicrosoftDocsUrl(url: URL) {
   if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
 
   if (localeFragment?.match(/^[a-z]{2}-[a-z]{2}$/ui)) {
-    replaceAt(pathnameFragments, 1, englishLocale)
+    replaceAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
   } else {
-    insertAt(pathnameFragments, 1, englishLocale)
+    insertAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
   }
 
   url.pathname = pathnameFragments.join('/')
@@ -55,9 +55,9 @@ function rewriteMicrosoftLearnUrl(url: URL) {
   if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
 
   if (localeFragment?.match(/^[a-z]{2}-[a-z]{2}$/ui)) {
-    replaceAt(pathnameFragments, 1, englishLocale)
+    replaceAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
   } else {
-    insertAt(pathnameFragments, 1, englishLocale)
+    insertAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
   }
 
   url.pathname = pathnameFragments.join('/')
@@ -78,9 +78,9 @@ function rewriteMozillaMdnUrl(url: URL) {
   if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
 
   if (localeFragment?.match(/^[a-z]{2}(?:-[a-z]{2})?$/ui)) {
-    replaceAt(pathnameFragments, 1, englishLocale)
+    replaceAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
   } else {
-    insertAt(pathnameFragments, 1, englishLocale)
+    insertAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
   }
 
   url.pathname = pathnameFragments.join('/')
@@ -99,7 +99,7 @@ function rewriteLegacyReactJsUrl(url: URL) {
 
   if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
 
-  replaceAt(hostnameFragments, 0, englishLocale)
+  replaceAt(hostnameFragments, 0, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
 
   url.hostname = hostnameFragments.join('.')
 
@@ -135,9 +135,9 @@ function rewritePhpManualUrl(url: URL) {
   if (secondFragment && caseInsensitiveStringEqual(secondFragment, englishLocale)) return null
 
   if (secondFragment?.match(/^[a-z]{2}(?:_[a-z]{2})?$/ui)) {
-    replaceAt(pathnameFragments, 2, englishLocale)
+    replaceAt(pathnameFragments, 2, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
   } else {
-    insertAt(pathnameFragments, 2, englishLocale)
+    insertAt(pathnameFragments, 2, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
   }
 
   url.pathname = pathnameFragments.join('/')
@@ -153,7 +153,7 @@ function rewritePythonDocsUrl(url: URL) {
 
   if (!localeFragment?.match(/^[a-z]{2}(?:-[a-z]{2})?$/ui)) return null
 
-  removeAt(pathnameFragments, 1)
+  removeAt(pathnameFragments, 1) // eslint-disable-line @typescript-eslint/no-magic-numbers
 
   url.pathname = pathnameFragments.join('/')
 

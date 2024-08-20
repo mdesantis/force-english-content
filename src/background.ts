@@ -20,8 +20,9 @@ function handleBeforeRequest({ tabId, 'url': urlAsString }: OnBeforeRequestDetai
     if (redirectUrl) {
       browser.tabs.update(tabId, { 'url': redirectUrl.toString() }).catch(() => {
         // [Mozilla says](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/update#return_value):
-        // > If the tab could not be found or some other error occurs, the promise will be rejected with an error message.
-        // Don't think we need to do anything in that case.
+        // > If the tab could not be found or some other error occurs, the promise will be rejected with an error
+        // > message.
+        // We don't need to do anything in those cases.
       })
       return undefined
     }

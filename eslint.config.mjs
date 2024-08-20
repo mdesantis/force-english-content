@@ -26,6 +26,10 @@ export default tseslint.config(
         'allowArrowFunctions': true
       }],
       'no-undefined': 'off',
+      'max-len': ['error', {
+        'code': 120,
+        'ignoreUrls': true
+      }],
       'max-statements': ['error', {
         'max': 15
       }],
@@ -38,16 +42,30 @@ export default tseslint.config(
   {
     'files': ['**/*.ts'],
     'rules': {
+      '@typescript-eslint/max-params': 'error',
+      '@typescript-eslint/no-magic-numbers': ['error', {
+        'ignoreTypeIndexes': true
+      }],
+      '@typescript-eslint/no-shadow': 'error',
+      '@typescript-eslint/no-unused-vars': ['warn', {
+        'argsIgnorePattern': '^_',
+        'varsIgnorePattern': '^_'
+      }],
+      '@typescript-eslint/no-use-before-define': 'error',
       'max-params': 'off',
       'no-magic-numbers': 'off',
-      'no-shadow': 'off'
+      'no-shadow': 'off',
+      'no-unused-vars': 'off',
+      'no-use-before-define': 'off'
     }
   },
   {
     'files': ['**/*.spec.ts'],
     'rules': {
-      'max-lines': 'off',
-      'max-lines-per-function': 'off'
+      '@typescript-eslint/max-params': 'off',
+      '@typescript-eslint/no-shadow': 'off',
+      'max-lines-per-function': 'off',
+      'max-lines': 'off'
     }
   }
 )
