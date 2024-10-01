@@ -26,7 +26,7 @@
     "@types/webextension-polyfill": "^0.10.7",
     "chrome-webstore-upload-cli": "^3.3.1",
     "codecov": "^3.8.3",
-    "eslint": "^9.9.1",
+    "eslint": "^9.11.1",
     "eslint-plugin-mocha": "^10.5.0",
     "mocha": "^10.7.3",
     "nyc": "^17.0.0",
