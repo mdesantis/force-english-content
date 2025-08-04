@@ -59,7 +59,9 @@ function shouldNotDoAnything(
   } = {}
 ) {
   it('should return null', () => { shouldReturnNull(describedFunction, urlAsString) })
+
   it('should not change URL', () => { shouldNotChangeUrl(describedFunction, urlAsString) })
+
   describe('and URL is upper-case', () => {
     it('should return null', () => { shouldReturnNull(describedFunction, upperCaseUrlAsString) })
 
@@ -77,7 +79,9 @@ function shouldChangeUrlAndReturnIt(
   } = {}
 ) {
   it('should change URL', () => { shouldChangeUrl(describedFunction, urlAsString, expectedUrlAsString) })
+
   it('should return changed URL', () => { shouldReturnChangedUrl(describedFunction, urlAsString, expectedUrlAsString) })
+
   describe('and URL is upper-case', () => { // eslint-disable-line mocha/no-identical-title
     it(
       'should change URL',

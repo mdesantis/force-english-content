@@ -6,12 +6,18 @@ import stylistic from '@stylistic/eslint-plugin'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  { ignores: ['dist', 'dist-*', 'eslint.config.mjs'] },
-  eslint.configs.all,
-  stylistic.configs['all-flat'],
-  mochaPlugin.configs.flat.recommended,
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
+  ...[
+    { ignores: ['dist', 'dist-*', 'eslint.config.mjs'] },
+    ...(Array.isArray(eslint.configs.all) ? eslint.configs.all : [eslint.configs.all]),
+    ...(Array.isArray(stylistic.configs['all']) ? stylistic.configs['all'] : [stylistic.configs['all']]),
+    ...(mochaPlugin.configs?.recommended
+      ? (Array.isArray(mochaPlugin.configs.recommended)
+        ? mochaPlugin.configs.recommended
+        : [mochaPlugin.configs.recommended])
+      : []),
+    ...tseslint.configs.strictTypeChecked,
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
   {
     languageOptions: {
       parserOptions: {
@@ -96,6 +102,7 @@ export default tseslint.config(
   {
     files: ['src/rewrites.spec.ts'],
     rules: {
+      'mocha/consistent-spacing-between-blocks': 'off',
       'mocha/no-mocha-arrows': 'off',
       'mocha/no-setup-in-describe': 'off'
     }
