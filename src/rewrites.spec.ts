@@ -564,5 +564,32 @@ describe('ForceEnglishContent', () => {
       })
     })
   })
-})
 
+  describe('rewriteAndroidDevelopersUrl()', () => {
+    const describedFunction = REWRITES['*://developer.android.com/*']
+
+    describe('when the domain does not match', () => {
+      const urlAsString = 'https://www.android.com'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+    })
+
+    describe('when the are no search params', () => {
+      const urlAsString = 'https://developer.android.com'
+      const expectedUrlAsString = 'https://developer.android.com/?hl=en'
+      const upperCaseExpectedUrlAsString = 'https://developer.android.com/?hl=en'
+      const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+      shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+    })
+
+    describe('when the are is "hl=it" search param', () => {
+      const urlAsString = 'https://developer.android.com/?hl=it'
+      const expectedUrlAsString = 'https://developer.android.com/?hl=en'
+      const upperCaseExpectedUrlAsString = 'https://developer.android.com/?HL=IT&hl=en'
+      const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+      shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+    })
+  })
+})

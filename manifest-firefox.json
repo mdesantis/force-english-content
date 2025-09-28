@@ -27,7 +27,8 @@
     "*://*.reactjs.org/*",
     "*://developers.facebook.com/*",
     "*://www.php.net/*",
-    "*://docs.python.org/*"
+    "*://docs.python.org/*",
+    "*://developer.android.com/*"
   ],
   "background": {
     "scripts": [

@@ -160,8 +160,17 @@ function rewritePythonDocsUrl(url: URL) {
   return url
 }
 
+function rewriteAndroidDevelopersUrl(url: URL) {
+  if (url.hostname !== 'developer.android.com') return null
+
+  url.searchParams.set('hl', 'en')
+
+  return url
+}
+
 const REWRITES = {
   '*://*.legacy.reactjs.org/*': rewriteLegacyReactJsUrl,
+  '*://developer.android.com/*': rewriteAndroidDevelopersUrl,
   '*://developer.mozilla.org/*': rewriteMozillaMdnUrl,
   '*://developers.facebook.com/*': rewriteFacebookDevelopersUrl,
   '*://docs.microsoft.com/*': rewriteMicrosoftDocsUrl,
