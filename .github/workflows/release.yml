@@ -4,16 +4,24 @@ on:
   push:
     tags:
       - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: "Browser to test"
+        type: choice
+        options:
+          - chrome
+          - firefox
+          - both
+        default: chrome
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
-      matrix:
-        command:
-          - firefox
-          - chrome
+        fail-fast: false
+        matrix:
+          command: ${{ fromJSON(github.event_name == 'workflow_dispatch' && (inputs.browser == 'chrome' && '["chrome"]' || inputs.browser == 'firefox' && '["firefox"]' || '["chrome", "firefox"]') || '["chrome", "firefox"]') }}
     steps:
       - name: Install build dependencies
         run: sudo apt-get -qq update && sudo apt-get install --no-install-recommends -y bash jq
@@ -46,6 +54,7 @@ jobs:
           WEB_EXT_API_KEY: ${{ secrets.AMO_API_KEY }}
           WEB_EXT_API_SECRET: ${{ secrets.AMO_API_SECRET }}
       - name: Release
+        if: github.event_name == 'push'
         uses: softprops/action-gh-release@v3
         with:
           files: |
