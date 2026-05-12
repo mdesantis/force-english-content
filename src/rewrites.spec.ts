@@ -145,6 +145,15 @@ describe('ForceEnglishContent', () => {
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
       })
     })
+
+    describe('when the first URL pathname fragment is not a locale', () => {
+      const urlAsString = 'https://docs.microsoft.com/some/path'
+      const expectedUrlAsString = 'https://docs.microsoft.com/en-us/some/path'
+      const upperCaseExpectedUrlAsString = 'https://docs.microsoft.com/en-us/SOME/PATH'
+      const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+      shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+    })
   })
 
   describe('rewriteMicrosoftLearnUrl()', () => {
@@ -193,6 +202,15 @@ describe('ForceEnglishContent', () => {
 
         shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
       })
+    })
+
+    describe('when the first URL pathname fragment is not a locale', () => {
+      const urlAsString = 'https://learn.microsoft.com/some/path'
+      const expectedUrlAsString = 'https://learn.microsoft.com/en-us/some/path'
+      const upperCaseExpectedUrlAsString = 'https://learn.microsoft.com/en-us/SOME/PATH'
+      const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+      shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
     })
   })
 

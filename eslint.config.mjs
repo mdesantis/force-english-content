@@ -7,7 +7,7 @@ import stylistic from '@stylistic/eslint-plugin'
 import tseslint from 'typescript-eslint'
 
 export default defineConfig([
-  globalIgnores(['dist', 'dist-*', 'eslint.config.mjs', 'scripts', 'tmp']),
+  globalIgnores(['coverage', 'dist', 'dist-*', 'eslint.config.mjs', 'scripts', 'tmp']),
 
   eslint.configs.all,
   stylistic.configs.all,

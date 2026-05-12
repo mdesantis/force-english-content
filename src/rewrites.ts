@@ -34,7 +34,9 @@ function rewriteMicrosoftDocsUrl(url: URL) {
 
   if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
 
-  if (localeFragment?.match(/^[a-z]{2}-[a-z]{2}$/ui)) {
+  const isKnownLocale = localeFragment && (/^[a-z]{2}-[a-z]{2}$/ui).test(localeFragment)
+
+  if (isKnownLocale) {
     replaceAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
   } else {
     insertAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
@@ -54,7 +56,8 @@ function rewriteMicrosoftLearnUrl(url: URL) {
 
   if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
 
-  if (localeFragment?.match(/^[a-z]{2}-[a-z]{2}$/ui)) {
+  const isKnownLocale = localeFragment && (/^[a-z]{2}-[a-z]{2}$/ui).test(localeFragment)
+  if (isKnownLocale) {
     replaceAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
   } else {
     insertAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
@@ -77,7 +80,9 @@ function rewriteMozillaMdnUrl(url: URL) {
 
   if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
 
-  if (localeFragment?.match(/^[a-z]{2}(?:-[a-z]{2})?$/ui)) {
+  const isKnownLocale = localeFragment && (/^[a-z]{2}(?:-[a-z]{2})?$/ui).test(localeFragment)
+
+  if (isKnownLocale) {
     replaceAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
   } else {
     insertAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
@@ -92,10 +97,6 @@ function rewriteLegacyReactJsUrl(url: URL) {
   if (!(/^[a-z]{2}(?:-[a-z]{2,4})?\.legacy\.reactjs\.org$/u).exec(url.hostname)) return null
 
   const hostnameFragments = url.hostname.split('.')
-
-  const [localeFragment] = hostnameFragments
-
-  if (!localeFragment) return null
 
   removeAt(hostnameFragments, 0) // eslint-disable-line @typescript-eslint/no-magic-numbers
 
@@ -149,7 +150,9 @@ function rewritePythonDocsUrl(url: URL) {
   const pathnameFragments = url.pathname.split('/')
   const [, localeFragment] = pathnameFragments
 
-  if (!localeFragment?.match(/^[a-z]{2}(?:-[a-z]{2})?$/ui)) return null
+  const isLocale = localeFragment && (/^[a-z]{2}(?:-[a-z]{2})?$/ui).test(localeFragment)
+
+  if (!isLocale) return null
 
   removeAt(pathnameFragments, 1) // eslint-disable-line @typescript-eslint/no-magic-numbers
 
@@ -167,7 +170,9 @@ function rewriteOpenCodeUrl(url: URL) {
 
   if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
 
-  if (localeFragment?.match(/^[a-z]{2}$/ui)) {
+  const isKnownLocale = localeFragment && (/^[a-z]{2}$/ui).test(localeFragment)
+
+  if (isKnownLocale) {
     replaceAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
   } else {
     return null
