@@ -95,11 +95,9 @@ function rewriteLegacyReactJsUrl(url: URL) {
 
   const [localeFragment] = hostnameFragments
 
-  const englishLocale = 'en'
+  if (!localeFragment) return null
 
-  if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
-
-  replaceAt(hostnameFragments, 0, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
+  removeAt(hostnameFragments, 0) // eslint-disable-line @typescript-eslint/no-magic-numbers
 
   url.hostname = hostnameFragments.join('.')
 
