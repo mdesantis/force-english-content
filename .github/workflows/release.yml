@@ -13,7 +13,7 @@ on:
           - chrome
           - firefox
           - both
-        default: chrome
+        default: both
 
 jobs:
   build:
