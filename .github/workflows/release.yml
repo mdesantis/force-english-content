@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       browser:
-        description: "Browser to test"
+        description: "Target store to submit the extension to"
         type: choice
         options:
           - chrome
