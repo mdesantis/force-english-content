@@ -9,12 +9,16 @@ on:
       - main
   pull_request:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - name: Install build dependencies
-      run: sudo apt-get update && sudo apt-get install -y bash jq
+      run: sudo apt-get -qq update && sudo apt-get install --no-install-recommends -y bash jq
     - name: Checkout
       uses: actions/checkout@v6
     - name: Use Node.js LTS
