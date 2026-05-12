@@ -1,3 +1,5 @@
+/// <reference types="node" />
+/// <reference types="mocha" />
 
 import assert from 'assert'
 

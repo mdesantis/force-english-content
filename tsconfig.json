@@ -3,8 +3,8 @@
   "extends": "./node_modules/@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
     "target": "ES6",
-    "lib": ["DOM"],
-    "types": ["node", "mocha"],
+    "lib": ["ES2020", "WebWorker"],
+    "types": [],
     "isolatedModules": true,
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
