@@ -18,6 +18,7 @@
     "webextension-polyfill": "^0.12.0"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@tsconfig/recommended": "^1.0.13",
     "@types/mocha": "^10.0.10",
@@ -36,7 +37,7 @@
     "web-ext": "^8.10.0"
   },
   "scripts": {
-    "build:assets:icons": "./scripts/build-icons.sh",
+    "build:assets:icons": "node scripts/build-icons.mjs",
     "build:assets:static": "mkdir -p dist && cp LICENSE dist",
     "build:assets": "npm run build:assets:static && npm run build:assets:icons",
     "build:parcel:dev": "parcel build --no-optimize",

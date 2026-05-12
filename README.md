@@ -62,19 +62,19 @@ necessity anyway. So have fun instead of being confused! :gb:
 
 This project uses Bash for [scripts](./scripts), jq for the
 [bump manifest version script](./scripts/update-manifests-extension-version.sh),
-and Inkscape for the [build icons script](./scripts/build-icons.sh).
+and @resvg/resvg-js for the [build icons script](./scripts/build-icons.mjs).
 
 ### Setup on Ubuntu
 
 There is a setup script for Ubuntu which prepares your machine for development:
 
 ```sh
-./script/setup-ubuntu.sh
+./scripts/setup-ubuntu.sh
 ```
 
 ### Setup on other OSes
 
-Install Bash, jq, Inkscape and NodeJS and you're good to go.
+Install Bash, jq and NodeJS and you're good to go.
 
 ### Workflow
 

@@ -4,7 +4,7 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-sudo apt-get install -y bash curl inkscape jq
+sudo apt-get install -y bash curl jq
 
 if ! command -v node &> /dev/null; then
   nodejs_latest_lts_major=$(

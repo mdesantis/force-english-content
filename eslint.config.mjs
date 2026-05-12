@@ -7,7 +7,7 @@ import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
   ...[
-    { ignores: ['dist', 'dist-*', 'eslint.config.mjs'] },
+    { ignores: ['dist', 'dist-*', 'eslint.config.mjs', 'scripts', 'tmp'] },
     ...(Array.isArray(eslint.configs.all) ? eslint.configs.all : [eslint.configs.all]),
     ...(Array.isArray(stylistic.configs['all']) ? stylistic.configs['all'] : [stylistic.configs['all']]),
     ...(mochaPlugin.configs?.recommended
