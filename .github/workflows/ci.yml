@@ -15,24 +15,26 @@ jobs:
     steps:
     - name: Install build dependencies
       run: sudo apt-get update && sudo apt-get install -y bash jq
-    - uses: actions/checkout@v6
+    - name: Checkout
+      uses: actions/checkout@v6
     - name: Use Node.js LTS
       uses: actions/setup-node@v6
       with:
         node-version: lts/*
         check-latest: true
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build
-    - run: npm run lint
-    - run: npx nyc --reporter=lcov npm test
-    # codecov action breaks some builds for no reason, so we need to ignore its failures.
-    # See: https://github.com/mdesantis/force-english-content/actions/runs/9333212817/job/25689985967
-    # - run: npx codecov
-    # - name: Upload coverage to Codecov
-    #   uses: codecov/codecov-action@v4
-    #   with:
-    #     fail_ci_if_error: true
-    #     verbose: true
-    #   env:
-    #     CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    - name: Install dependencies
+      run: npm ci
+    - name: Build
+      run: npm run build
+    - name: Lint
+      run: npm run lint
+    - name: Test
+      run: npx nyc --reporter=lcov npm test
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v6
+      with:
+        fail_ci_if_error: true
+        verbose: true
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
