@@ -25,7 +25,8 @@
     "*://developers.facebook.com/*",
     "*://www.php.net/*",
     "*://docs.python.org/*",
-    "*://developer.android.com/*"
+    "*://developer.android.com/*",
+    "*://opencode.ai/*"
   ],
   "background": {
     "service_worker": "background.js"

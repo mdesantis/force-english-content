@@ -158,6 +158,26 @@ function rewritePythonDocsUrl(url: URL) {
   return url
 }
 
+function rewriteOpenCodeUrl(url: URL) {
+  if (url.hostname !== 'opencode.ai') return null
+
+  const englishLocale = 'en'
+  const pathnameFragments = url.pathname.split('/')
+  const [, localeFragment] = pathnameFragments
+
+  if (localeFragment && caseInsensitiveStringEqual(localeFragment, englishLocale)) return null
+
+  if (localeFragment?.match(/^[a-z]{2}$/ui)) {
+    replaceAt(pathnameFragments, 1, englishLocale) // eslint-disable-line @typescript-eslint/no-magic-numbers
+  } else {
+    return null
+  }
+
+  url.pathname = pathnameFragments.join('/')
+
+  return url
+}
+
 function rewriteAndroidDevelopersUrl(url: URL) {
   if (url.hostname !== 'developer.android.com') return null
 
@@ -174,6 +194,7 @@ const REWRITES = {
   '*://docs.microsoft.com/*': rewriteMicrosoftDocsUrl,
   '*://docs.python.org/*': rewritePythonDocsUrl,
   '*://learn.microsoft.com/*': rewriteMicrosoftLearnUrl,
+  '*://opencode.ai/*': rewriteOpenCodeUrl,
   '*://www.php.net/*': rewritePhpManualUrl
 }
 

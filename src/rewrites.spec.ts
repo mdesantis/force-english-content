@@ -595,4 +595,56 @@ describe('ForceEnglishContent', () => {
       shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
     })
   })
+
+  describe('rewriteOpenCodeUrl()', () => {
+    const describedFunction = REWRITES['*://opencode.ai/*']
+
+    describe('when the domain does not match', () => {
+      const urlAsString = 'https://www.example.com'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+    })
+
+    describe('when the are no URL pathname fragments', () => {
+      const urlAsString = 'https://opencode.ai'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+    })
+
+    describe('when there is one URL pathname fragment that is not a locale', () => {
+      const urlAsString = 'https://opencode.ai/docs'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+    })
+
+    describe('when the first URL pathname fragment is "en"', () => {
+      const urlAsString = 'https://opencode.ai/en'
+
+      shouldNotDoAnything(describedFunction, urlAsString)
+
+      describe('and there are more pathname fragments', () => {
+        const urlAsString = 'https://opencode.ai/en/docs'
+
+        shouldNotDoAnything(describedFunction, urlAsString)
+      })
+    })
+
+    describe('when the first URL pathname fragment is "it"', () => {
+      const urlAsString = 'https://opencode.ai/it'
+      const expectedUrlAsString = 'https://opencode.ai/en'
+      const upperCaseExpectedUrlAsString = 'https://opencode.ai/en'
+      const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+      shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+
+      describe('and there are more pathname fragments', () => {
+        const urlAsString = 'https://opencode.ai/it/docs'
+        const expectedUrlAsString = 'https://opencode.ai/en/docs'
+        const upperCaseExpectedUrlAsString = 'https://opencode.ai/en/DOCS'
+        const upperCaseOptions = { upperCaseExpectedUrlAsString }
+
+        shouldChangeUrlAndReturnIt(describedFunction, urlAsString, expectedUrlAsString, upperCaseOptions)
+      })
+    })
+  })
 })
