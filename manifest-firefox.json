@@ -7,7 +7,12 @@
   "author": "Maurizio De Santis",
   "browser_specific_settings": {
     "gecko": {
-      "id": "{45b75146-960d-47e4-b45f-c642ae8a336d}"
+      "id": "{45b75146-960d-47e4-b45f-c642ae8a336d}",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
     }
   },
   "icons": {
