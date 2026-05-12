@@ -1,23 +1,20 @@
 // @ts-check
 
+import { defineConfig, globalIgnores } from 'eslint/config'
 import eslint from '@eslint/js'
 import mochaPlugin from 'eslint-plugin-mocha'
 import stylistic from '@stylistic/eslint-plugin'
 import tseslint from 'typescript-eslint'
 
-export default tseslint.config(
-  ...[
-    { ignores: ['dist', 'dist-*', 'eslint.config.mjs', 'scripts', 'tmp'] },
-    ...(Array.isArray(eslint.configs.all) ? eslint.configs.all : [eslint.configs.all]),
-    ...(Array.isArray(stylistic.configs['all']) ? stylistic.configs['all'] : [stylistic.configs['all']]),
-    ...(mochaPlugin.configs?.recommended
-      ? (Array.isArray(mochaPlugin.configs.recommended)
-        ? mochaPlugin.configs.recommended
-        : [mochaPlugin.configs.recommended])
-      : []),
-    ...tseslint.configs.strictTypeChecked,
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
+export default defineConfig([
+  globalIgnores(['dist', 'dist-*', 'eslint.config.mjs', 'scripts', 'tmp']),
+
+  eslint.configs.all,
+  stylistic.configs.all,
+  mochaPlugin.configs.recommended,
+  ...tseslint.configs.strictTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
+
   {
     languageOptions: {
       parserOptions: {
@@ -26,6 +23,7 @@ export default tseslint.config(
       }
     }
   },
+
   {
     rules: {
       '@stylistic/array-element-newline': ['error', 'consistent'],
@@ -70,6 +68,7 @@ export default tseslint.config(
       }]
     }
   },
+
   {
     files: ['**/*.ts'],
     rules: {
@@ -90,6 +89,7 @@ export default tseslint.config(
       'no-use-before-define': 'off'
     }
   },
+
   {
     files: ['**/*.spec.ts'],
     rules: {
@@ -99,6 +99,7 @@ export default tseslint.config(
       'max-lines': 'off'
     }
   },
+
   {
     files: ['src/rewrites.spec.ts'],
     rules: {
@@ -107,4 +108,4 @@ export default tseslint.config(
       'mocha/no-setup-in-describe': 'off'
     }
   }
-)
+])
