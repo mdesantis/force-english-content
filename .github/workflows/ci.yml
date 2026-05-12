@@ -4,8 +4,10 @@
 name: CI
 
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   build:
@@ -13,9 +15,9 @@ jobs:
     steps:
     - name: Install build dependencies
       run: sudo apt-get update && sudo apt-get install -y bash inkscape jq
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Use Node.js LTS
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: lts/*
         check-latest: true
