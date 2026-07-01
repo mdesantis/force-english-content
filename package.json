@@ -23,7 +23,7 @@
     "@stylistic/eslint-plugin": "^5.10.0",
     "@tsconfig/recommended": "^1.0.13",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^25.7.0",
+    "@types/node": "^26.1.0",
     "@types/webextension-polyfill": "^0.12.5",
     "chrome-webstore-upload-cli": "^4.0.0",
     "codecov": "^3.8.3",
