@@ -26,7 +26,7 @@ jobs:
       - name: Install build dependencies
         run: sudo apt-get -qq update && sudo apt-get install --no-install-recommends -y bash jq
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Use Node.js LTS
         uses: actions/setup-node@v6
         with:
