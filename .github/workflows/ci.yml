@@ -36,6 +36,7 @@ jobs:
     - name: Test
       run: npx nyc --reporter=lcov npm test
     - name: Upload coverage to Codecov
+      if: github.actor != 'dependabot[bot]'
       uses: codecov/codecov-action@v6
       with:
         fail_ci_if_error: true
